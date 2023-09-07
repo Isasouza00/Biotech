@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Cadastrar</title>
+</head>
+<body>
+    <div class="Container">
+        <div class="box-left">
+            <div class="titulo-left"> Bem vindo !</div>
+            <div class="sub-titulo-left"> Já possuí uma conta registrada? <br> Por favor faça o login com suas <br> informações pessoais</div>
+            <div class="botao-login"> <button> Log in </button> </div>
+        </div>
+
+        <div class="box-right">
+            <div class="titulo-right"> Crie uma conta </div>
+            <div class="sub-titulo-right"> Use seu cpf para se registrar </div>
+            <div class="campo-usuario"><input type="text" id="usuario" size="40" placeholder="Nome completo"/></div>
+            <div class="campo-usuario"><input type="text" id="cpf" size="40" placeholder="CPF (apenas números)"/></div>
+            <div class="campo-email"><input type="email" id="email" maxlength={32} placeholder="Email" size="40"/></div>
+            <div class="campo-senha"><input type="password" id="senha" maxlength={32} placeholder="Senha" size="40" /></div>
+            <div class="campo-senha-repetida"><input type="password" maxlength={32} placeholder="Confirmar senha" size="40" /></div>
+            <div class="botao-criar-conta"> <button> Criar Conta </button></div>
+        </div>
+    </div>
+</body>
+</html>
