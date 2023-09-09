@@ -39,6 +39,9 @@ def cadastrar():
                 break
 
         if consulta_cpf.consulta_cpf(cpf) == True:
+            if len(senha) < 8 or senha.isalnum == False:
+                erro = 'A SENHA DEVE CONTER 8 CARACTERES E SER ALFANUMÉRICA'
+                return render_template('cadastro.html', erro = erro)
             if confirmaçao_senha == senha:
                 database.inserir_usuario(nome, cpf, email, senha)
                 return render_template('login.html')
