@@ -27,3 +27,5 @@ def cadastro():
 # RODANDO SITE
 if __name__ == '__main__':
     app.run(debug=True)
+
+# TESTE COMMIT
