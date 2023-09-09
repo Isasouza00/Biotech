@@ -23,9 +23,10 @@
             <div class="campo-usuario"><input type="text" name='cadastro_cpf' id="cadastro_cpf" size="40" placeholder="CPF (apenas números)"/></div>
             <div class="campo-email"><input type="email" name='cadastro_email' id="cadastro_email" maxlength={32} placeholder="Email" size="40"/></div>
             <div class="campo-senha"><input type="password" name='cadastro_senha' id="cadastro_senha" maxlength={32} placeholder="Senha" size="40" /></div>
-            <div class="campo-senha-repetida"><input type="password" maxlength={32} placeholder="Confirmar senha" size="40" /></div>
+            <div class="campo-senha-repetida"><input type="password" name='confirmaçao_senha' maxlength={32} placeholder="Confirmar senha" size="40" /></div>
             <div class="botao-criar-conta"> <button type="submit"> Criar Conta </button></div>
             </form>
+            <div class="titulo-right"><br>{{erro}}</div>
         </div>
     </div>
 </body>
