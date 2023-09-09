@@ -12,12 +12,16 @@ app = Flask(__name__)
 # PÁGINA CADASTRO
 @app.route('/')
 def input():
-    return render_template('cadastro.html')
+    return render_template('home.html')
 
 # PÁGINA SUCCESS (TEMPORÁRIA)
-@app.route('/cadastro', methods=['POST'])
+@app.route('/cadastro')
 def cadastro():
+    return render_template('cadastro.html')
 
+@app.route('/cadastro', methods=['POST'])
+def cadastrar():
+    render_template('cadastro.html')
     #CAPTURANDO INPUTS DO FORMULÁRIO
     if request.method == 'POST':
         nome = request.form.get('cadastro_nome').lower()
