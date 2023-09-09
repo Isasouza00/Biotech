@@ -1,0 +1,197 @@
+@font-face {
+    font-family: fonte-50;
+    src: url('/static/assets/fonts/Montserrat-Light.woff');
+}
+
+@font-face {
+    font-family: fonte-100;
+    src: url('/static/assets/fonts/Montserrat-Regular.woff');
+}
+
+@font-face {
+    font-family: fonte-200;
+    src: url('/static/assets/fonts/Montserrat-Medium.woff');
+}
+
+@font-face {
+    font-family: fonte-300;
+    src: url('/static/assets/fonts/Montserrat-SemiBold.woff');
+}
+
+@font-face {
+    font-family: fonte-400;
+    src: url('/static/assets/fonts/Montserrat-Bold.woff');
+}
+
+
+
+*{
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.Container{
+    display: flex;
+    flex-direction: row;
+}
+
+.box-left{
+    display: flex;
+    flex-direction: column;
+    background-color: #3b621e;
+    height: 100vh;
+    width: 70vw;
+    color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo-left{
+    font: 2.3em fonte-300;
+    padding-bottom: 1em;
+}
+
+.sub-titulo-left{
+    font: 1.5em fonte-200;
+    padding-bottom: 2em;
+}
+
+.botao-login button{
+background-color: #477524;
+border-color: white;
+border-radius: 60px;
+color: white;
+padding: 7px 60px;
+font: 20px fonte-300;
+border-width: 2px;
+border-style: solid;
+
+}
+
+.botao-login button:hover{
+    cursor: pointer;
+    }
+
+.botao-criar-conta button:hover{
+    cursor: pointer;
+    }
+
+.box-right{
+    display: flex;
+    flex-direction: column;
+    background-color: #0e0e0e;
+    color: white;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.titulo-right{
+color: #76c33c;
+font: 2em fonte-300;
+text-align: center;
+padding-bottom: 10px;
+
+}
+
+.sub-titulo-right{
+    font: 1.5em fonte-50;
+    text-align: center;
+    
+}
+
+.campo-usuario{
+ margin: 3em 0px 0px 0em;
+ text-align: center;
+
+}
+
+.campo-usuario input{
+position: relative;
+ background-color: #373737;
+ border: none;
+font: 1em fonte-100;
+color: white;
+padding: 15px 15px 15px 60px;
+background-image: url(/static/assets/images/Usuario-2.png);
+background-position: 15px 10px;
+background-repeat: no-repeat;
+}
+
+.imagem-usu i, img{
+    text-align: left;
+    position: absolute;
+
+}
+
+.campo-email{
+    margin: 1em 0px 0px 0em;
+    text-align: center;
+}
+
+.campo-email input{
+background-color: #373737;
+border: none;
+font: 1em fonte-100;
+color: white;
+padding: 15px 15px 15px 60px;
+background-image: url();
+background-position: 15px 10px;
+background-repeat: no-repeat;
+}
+
+
+.campo-senha{
+    margin: 1em 0px 0px 0em;
+    text-align: center;
+}
+
+.campo-senha input{
+background-color: #373737;
+border: none;
+font: 1em fonte-100;
+color: white;
+padding: 15px 15px 15px 60px;
+background-image: url(/static/assets/images/Chaveiro.png);
+background-position: 15px 10px;
+background-repeat: no-repeat;
+}
+
+.campo-senha-repetida{
+    margin: 1em 0px 0px 0em;
+    text-align: center;
+}
+
+.campo-senha-repetida input{
+background-color: #373737;
+border: none;
+font: 1em fonte-100;
+color: white;
+padding: 15px 15px 15px 60px;
+background-image: url(/static/assets/images/Chaveiro.png);
+background-position: 15px 10px;
+background-repeat: no-repeat;
+}
+
+.botao-criar-conta{
+    text-align: center;
+    padding-top: 2em;
+}
+
+.botao-criar-conta button{
+color: white;
+padding: 10px 60px;
+font: 20px fonte-300;
+border-width: 2px;
+border-style: solid;
+background-color: #1f1f1f;
+border-color: #76c33c;
+border-radius: 60px;
+}
+
+.botao-criar-conta button:hover{
+cursor: pointer;
+}
