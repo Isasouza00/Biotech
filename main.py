@@ -14,7 +14,7 @@ app = Flask(__name__)
 def input():
     return render_template('home.html')
 
-# PÁGINA SUCCESS (TEMPORÁRIA)
+# PÁGINA DE CADASTRO
 @app.route('/cadastro')
 def cadastro():
     return render_template('cadastro.html')
@@ -41,7 +41,7 @@ def cadastrar():
         if consulta_cpf.consulta_cpf(cpf) == True:
             if confirmaçao_senha == senha:
                 database.inserir_usuario(nome, cpf, email, senha)
-                return render_template('success.html')
+                return render_template('login.html')
             else:
                 erro = 'AS SENHAS SÃO DIFERENTES'
                 return render_template('cadastro.html', erro = erro)
