@@ -22,7 +22,6 @@ def cadastro():
 
 @app.route('/cadastro', methods=['POST'])
 def cadastrar():
-    render_template('cadastro.html')
     #CAPTURANDO INPUTS DO FORMULÁRIO
     if request.method == 'POST':
         nome = request.form.get('cadastro_nome').lower()
@@ -30,32 +29,35 @@ def cadastrar():
         email = request.form.get('cadastro_email').lower()
         senha = request.form.get('cadastro_senha')
         confirmaçao_senha = request.form.get('confirmaçao_senha')
+        return confirmaçoes(nome, cpf, email, senha, confirmaçao_senha)
 
-        #VERIFICAR CONDIÇÕES PARA ACEITE DO CADASTRO (CAMPOS COMPLETOS, SENHAS BATENDO, CPF VÁLIDO...)
-        while True:
-            if (nome == '' or cpf == '' or email == '' or senha == '' or confirmaçao_senha == ''):
-                erro = 'PREENCHA TODOS OS CAMPOS'
-                flash(erro)
-                return redirect('/cadastro')
-            else:
-                break
-
-        if consulta_cpf.consulta_cpf(cpf) == True:
-            if len(senha) < 8 or senha.isalnum == False:
-                erro = 'A SENHA DEVE CONTER 8 CARACTERES E SER ALFANUMÉRICA'
-                flash(erro)
-                return redirect('/cadastro')
-            if confirmaçao_senha == senha:
-                database.inserir_usuario(nome, cpf, email, senha)
-                return redirect('/login')
-            else:
-                erro = 'AS SENHAS SÃO DIFERENTES'
-                flash(erro)
-                return redirect('/cadastro')
-        else:
-            erro = 'CPF INVÁLIDO'
+def confirmaçoes(nome, cpf, email, senha, confirmaçao_senha):
+    #VERIFICAR CONDIÇÕES PARA ACEITE DO CADASTRO (CAMPOS COMPLETOS, SENHAS BATENDO, CPF VÁLIDO...)
+    while True:
+        if (nome == '' or cpf == '' or email == '' or senha == '' or confirmaçao_senha == ''):
+            erro = 'PREENCHA TODOS OS CAMPOS'
             flash(erro)
             return redirect('/cadastro')
+        else:
+            break
+
+    if consulta_cpf.consulta_cpf(cpf) == True:
+        if len(senha) < 8 or senha.isalnum == False:
+            erro = 'A SENHA DEVE CONTER 8 CARACTERES E SER ALFANUMÉRICA'
+            flash(erro)
+            return redirect('/cadastro')
+        if confirmaçao_senha == senha:
+            database.inserir_usuario(nome, cpf, email, senha)
+            return redirect('/login')
+        else:
+            erro = 'AS SENHAS SÃO DIFERENTES'
+            flash(erro)
+            return redirect('/cadastro')
+    else:
+        erro = 'CPF INVÁLIDO'
+        flash(erro)
+        return redirect('/cadastro')
+
 
 @app.route('/login')
 def login():
