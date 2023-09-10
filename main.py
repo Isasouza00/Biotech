@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, request, flash
 import database
 import consulta_cpf
 
+# CONECTANDDO AO DB
 try:
     database.conexao
 except database.mysql.connector.Error:
@@ -44,8 +45,12 @@ def confirmaçoes(nome, cpf, email, senha, confirmaçao_senha):
             return redirect('/cadastro')
         else:
             break
-    # VERIFICA SE CPF É VALOR VÁLIDO (SE POSSÍVEL IMPLEMENTAR API)
+    # VERIFICA SE CPF É VALOR VÁLIDO
     if consulta_cpf.consulta_cpf(cpf) == True:
+        if len(database.ler_cpf(cpf)) > 0:
+            erro = 'CPF JÁ CADASTRADO'
+            flash(erro)
+            return redirect('/cadastro')
         if len(senha) < 8 or senha.isalnum == False:
             erro = 'A SENHA DEVE CONTER 8 CARACTERES E SER ALFANUMÉRICA'
             flash(erro)
