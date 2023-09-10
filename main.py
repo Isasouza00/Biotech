@@ -20,6 +20,7 @@ def input():
 def cadastro():
     return render_template('cadastro.html')
 
+#PÁGINA QUE RECEBE DADOS DO CADASTRO
 @app.route('/cadastro', methods=['POST'])
 def cadastrar():
     #CAPTURANDO INPUTS DO FORMULÁRIO
@@ -31,6 +32,7 @@ def cadastrar():
         confirmaçao_senha = request.form.get('confirmaçao_senha')
         return confirmaçoes(nome, cpf, email, senha, confirmaçao_senha)
 
+#VERIFICANDO QUESITOS DE CADASTRO
 def confirmaçoes(nome, cpf, email, senha, confirmaçao_senha):
     #VERIFICAR CONDIÇÕES PARA ACEITE DO CADASTRO (CAMPOS COMPLETOS, SENHAS BATENDO, CPF VÁLIDO...)
     while True:
