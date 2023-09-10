@@ -10,7 +10,8 @@ cursor = conexao.cursor()
 
 # INSERINDO DADOS USUÁRIO
 def inserir_usuario(nome, cpf, email, senha):
-    # garantir que não cadastre cpf 
     comando = f'INSERT INTO tb_usuarios (nome, cpf, email, senha) VALUES ("{nome}", "{cpf}", "{email}", "{senha}")'
     cursor.execute(comando)
     conexao.commit()
+
+# TERMINAR CRUD

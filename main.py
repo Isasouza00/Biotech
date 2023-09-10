@@ -32,9 +32,11 @@ def cadastrar():
         confirmaçao_senha = request.form.get('confirmaçao_senha')
         return confirmaçoes(nome, cpf, email, senha, confirmaçao_senha)
 
-#VERIFICANDO QUESITOS DE CADASTRO
+#VERIFICAR CONDIÇÕES PARA ACEITE DO CADASTRO
 def confirmaçoes(nome, cpf, email, senha, confirmaçao_senha):
-    #VERIFICAR CONDIÇÕES PARA ACEITE DO CADASTRO (CAMPOS COMPLETOS, SENHAS BATENDO, CPF VÁLIDO...)
+    # IMPLEMENTAR CONFIRMAÇÃO DE CPF DUPLICADO
+
+    #VERIFICA SE CAMPOS ESTÃO PREENCHIDOS
     while True:
         if (nome == '' or cpf == '' or email == '' or senha == '' or confirmaçao_senha == ''):
             erro = 'PREENCHA TODOS OS CAMPOS'
@@ -42,12 +44,13 @@ def confirmaçoes(nome, cpf, email, senha, confirmaçao_senha):
             return redirect('/cadastro')
         else:
             break
-
+    # VERIFICA SE CPF É VALOR VÁLIDO (SE POSSÍVEL IMPLEMENTAR API)
     if consulta_cpf.consulta_cpf(cpf) == True:
         if len(senha) < 8 or senha.isalnum == False:
             erro = 'A SENHA DEVE CONTER 8 CARACTERES E SER ALFANUMÉRICA'
             flash(erro)
             return redirect('/cadastro')
+        # VERIFICA SE SENHA E CONFIRMAÇÃO DE SENHA ESTÃO BATENDO
         if confirmaçao_senha == senha:
             database.inserir_usuario(nome, cpf, email, senha)
             return redirect('/login')
@@ -60,7 +63,7 @@ def confirmaçoes(nome, cpf, email, senha, confirmaçao_senha):
         flash(erro)
         return redirect('/cadastro')
 
-
+# PÁGINA DE LOGIN
 @app.route('/login')
 def login():
     return render_template('login.html')
