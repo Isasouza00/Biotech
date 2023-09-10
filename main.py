@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, request, flash
 import database
 import consulta_cpf
 
-# CONECTANDDO AO DB
+# CONECTANDO AO DB
 try:
     database.conexao
 except database.mysql.connector.Error:
