@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, redirect, request, flash
 import database
 import consulta_cpf
 
@@ -8,6 +8,7 @@ except database.mysql.connector.Error:
     print('erro')
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "BIOTECH"
 
 # PÁGINA CADASTRO
 @app.route('/')
@@ -34,23 +35,31 @@ def cadastrar():
         while True:
             if (nome == '' or cpf == '' or email == '' or senha == '' or confirmaçao_senha == ''):
                 erro = 'PREENCHA TODOS OS CAMPOS'
-                return render_template('cadastro.html', erro = erro)
+                flash(erro)
+                return redirect('/cadastro')
             else:
                 break
 
         if consulta_cpf.consulta_cpf(cpf) == True:
             if len(senha) < 8 or senha.isalnum == False:
                 erro = 'A SENHA DEVE CONTER 8 CARACTERES E SER ALFANUMÉRICA'
-                return render_template('cadastro.html', erro = erro)
+                flash(erro)
+                return redirect('/cadastro')
             if confirmaçao_senha == senha:
                 database.inserir_usuario(nome, cpf, email, senha)
-                return render_template('login.html')
+                return redirect('/login')
             else:
                 erro = 'AS SENHAS SÃO DIFERENTES'
-                return render_template('cadastro.html', erro = erro)
+                flash(erro)
+                return redirect('/cadastro')
         else:
             erro = 'CPF INVÁLIDO'
-            return render_template('cadastro.html', erro = erro)
+            flash(erro)
+            return redirect('/cadastro')
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
 # RODANDO SITE
 if __name__ == '__main__':

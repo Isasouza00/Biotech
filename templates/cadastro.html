@@ -15,6 +15,7 @@
             <div class="botao-login"> <button> Log in </button> </div>
         </div>
 
+
         <div class="box-right">
             <form action="/cadastro" method="POST">
             <div class="titulo-right"> Crie uma conta </div>
@@ -22,12 +23,22 @@
             <div class="campo-usuario"><input type="text" name='cadastro_nome' id="cadastro_nome" size="40" placeholder="Nome completo"/></div>
             <div class="campo-usuario"><input type="text" name='cadastro_cpf' id="cadastro_cpf" size="40" placeholder="CPF (apenas números)"/></div>
             <div class="campo-email"><input type="email" name='cadastro_email' id="cadastro_email" maxlength={32} placeholder="Email" size="40"/></div>
+            <!-- AVISAR CRITÉRIOS DE SENHA (SER ALFANUMERICA E TER PELO MENOS 8 CARACTERES) -->
             <div class="campo-senha"><input type="password" name='cadastro_senha' id="cadastro_senha" maxlength={32} placeholder="Senha" size="40" /></div>
             <div class="campo-senha-repetida"><input type="password" name='confirmaçao_senha' maxlength={32} placeholder="Confirmar senha" size="40" /></div>
             <div class="botao-criar-conta"> <button type="submit"> Criar Conta </button></div>
             </form>
-            <div class="titulo-right"><br>{{erro}}</div>
+            {% set mensagens = get_flashed_messages() %}
+            {% if mensagens %}
+                <!-- mudar a classe e arrumar no CSS -->
+                <div class="titulo-right"><br>
+                    {% for msg in mensagens %}
+                        {{msg}}
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
     </div>
 </body>
 </html>
+
