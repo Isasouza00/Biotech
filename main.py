@@ -73,6 +73,19 @@ def confirmaçoes(nome, cpf, email, senha, confirmaçao_senha):
 def login():
     return render_template('login.html')
 
+@app.route('/login', methods=['POST'])
+def logar():
+    if request.method == 'POST':
+        cpf = request.form.get('login_cpf')
+        senha = request.form.get('login_senha')
+        while True:
+            if (cpf == '' or senha == ''):
+                erro = 'PREENCHA TODOS OS CAMPOS'
+                flash(erro)
+                return redirect('/login')
+            else:
+                break
+
 # RODANDO SITE
 if __name__ == '__main__':
     app.run(debug=True)
