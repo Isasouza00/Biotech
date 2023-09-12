@@ -2,38 +2,7 @@ from flask import Flask, render_template, redirect, request, flash
 import database
 import consulta_cpf
 
-# CONECTANDO AO DB
-try:
-    database.conexao
-except database.mysql.connector.Error:
-    print('erro')
-
-app = Flask(__name__)
-app.config['SECRET_KEY'] = "BIOTECH"
-
-# PÁGINA CADASTRO
-@app.route('/')
-def input():
-    return render_template('home.html')
-
-# PÁGINA DE CADASTRO
-@app.route('/cadastro')
-def cadastro():
-    return render_template('cadastro.html')
-
-#PÁGINA QUE RECEBE DADOS DO CADASTRO
-@app.route('/cadastro', methods=['POST'])
-def cadastrar():
-    #CAPTURANDO INPUTS DO FORMULÁRIO
-    if request.method == 'POST':
-        nome = request.form.get('cadastro_nome').lower()
-        cpf = request.form.get('cadastro_cpf')
-        email = request.form.get('cadastro_email').lower()
-        senha = request.form.get('cadastro_senha')
-        confirmaçao_senha = request.form.get('confirmaçao_senha')
-        return confirmaçoes(nome, cpf, email, senha, confirmaçao_senha)
-
-#VERIFICAR CONDIÇÕES PARA ACEITE DO CADASTRO
+#FUNÇÃO PARA VERIFICAR CONDIÇÕES PARA ACEITE DO CADASTRO
 def confirmaçoes(nome, cpf, email, senha, confirmaçao_senha):
     # IMPLEMENTAR CONFIRMAÇÃO DE CPF DUPLICADO
 
@@ -67,6 +36,40 @@ def confirmaçoes(nome, cpf, email, senha, confirmaçao_senha):
         erro = 'CPF INVÁLIDO'
         flash(erro)
         return redirect('/cadastro')
+
+# CONECTANDO AO DB
+try:
+    database.conexao
+except database.mysql.connector.Error:
+    print('erro')
+
+#DECLARANDO APP
+app = Flask(__name__)
+app.config['SECRET_KEY'] = "BIOTECH"
+
+# PÁGINA HOME
+@app.route('/')
+def home():
+    return render_template('home.html')
+
+# PÁGINA DE CADASTRO
+@app.route('/cadastro')
+def cadastro():
+    return render_template('cadastro.html')
+
+#PÁGINA QUE RECEBE DADOS DO CADASTRO
+@app.route('/cadastro', methods=['POST'])
+def cadastrar():
+    #CAPTURANDO INPUTS DO FORMULÁRIO
+    if request.method == 'POST':
+        nome = request.form.get('cadastro_nome').lower()
+        cpf = request.form.get('cadastro_cpf')
+        email = request.form.get('cadastro_email').lower()
+        senha = request.form.get('cadastro_senha')
+        confirmaçao_senha = request.form.get('confirmaçao_senha')
+        return confirmaçoes(nome, cpf, email, senha, confirmaçao_senha)
+
+
 
 # PÁGINA DE LOGIN
 @app.route('/login')
