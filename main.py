@@ -5,7 +5,7 @@ import consulta_cpf
 #FUNÇÃO PARA VERIFICAR CONDIÇÕES PARA ACEITE DO CADASTRO
 def confirmaçoes(nome, cpf, email, senha, confirmaçao_senha):
     # IMPLEMENTAR CONFIRMAÇÃO DE CPF DUPLICADO
-
+    #EXEMPLO PRA LIVIA VER
     #VERIFICA SE CAMPOS ESTÃO PREENCHIDOS
     while True:
         if (nome == '' or cpf == '' or email == '' or senha == '' or confirmaçao_senha == ''):
