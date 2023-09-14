@@ -58,24 +58,24 @@
 }
 
 .botao-login button{
-background-color: #477524;
-border-color: white;
-border-radius: 60px;
-color: white;
-padding: 7px 60px;
-font: 20px fonte-300;
-border-width: 2px;
-border-style: solid;
+    background-color: #477524;
+    border-color: white;
+    border-radius: 60px;
+    color: white;
+    padding: 7px 60px;
+    font: 20px fonte-300;
+    border-width: 2px;
+    border-style: solid;
 
 }
 
 .botao-login button:hover{
     cursor: pointer;
-    }
+}
 
 .botao-criar-conta button:hover{
     cursor: pointer;
-    }
+}
 
 .box-right{
     display: flex;
@@ -86,45 +86,41 @@ border-style: solid;
     width: 100vw;
     align-items: center;
     justify-content: center;
-
 }
 
 .titulo-right{
-color: #76c33c;
-font: 2em fonte-300;
-text-align: center;
-padding-bottom: 10px;
-
+    color: #76c33c;
+    font: 2em fonte-300;
+    text-align: center;
+    padding-bottom: 10px;
 }
 
 .sub-titulo-right{
     font: 1.5em fonte-50;
     text-align: center;
-    
+    margin-bottom: 2em;
 }
 
 .campo-usuario{
- margin: 3em 0px 0px 0em;
- text-align: center;
-
+    margin: 1em 0px 0px 0em;
+    text-align: center;
 }
 
 .campo-usuario input{
-position: relative;
- background-color: #373737;
- border: none;
-font: 1em fonte-100;
-color: white;
-padding: 15px 15px 15px 60px;
-background-image: url(/static/assets/images/Usuario-2.png);
-background-position: 15px 10px;
-background-repeat: no-repeat;
+    position: relative;
+    background-color: #373737;
+    border: none;
+    font: 1em fonte-100;
+    color: white;
+    padding: 15px 15px 15px 60px;
+    background-image: url(/static/assets/images/Usuario-2.png);
+    background-position: 15px 10px;
+    background-repeat: no-repeat;
 }
 
 .imagem-usu i, img{
     text-align: left;
     position: absolute;
-
 }
 
 .campo-email{
@@ -133,14 +129,14 @@ background-repeat: no-repeat;
 }
 
 .campo-email input{
-background-color: #373737;
-border: none;
-font: 1em fonte-100;
-color: white;
-padding: 15px 15px 15px 60px;
-background-image: url();
-background-position: 15px 10px;
-background-repeat: no-repeat;
+    background-color: #373737;
+    border: none;
+    font: 1em fonte-100;
+    color: white;
+    padding: 15px 15px 15px 60px;
+    background-image: url();
+    background-position: 15px 10px;
+    background-repeat: no-repeat;
 }
 
 
@@ -150,14 +146,14 @@ background-repeat: no-repeat;
 }
 
 .campo-senha input{
-background-color: #373737;
-border: none;
-font: 1em fonte-100;
-color: white;
-padding: 15px 15px 15px 60px;
-background-image: url(/static/assets/images/Chaveiro.png);
-background-position: 15px 10px;
-background-repeat: no-repeat;
+    background-color: #373737;
+    border: none;
+    font: 1em fonte-100;
+    color: white;
+    padding: 15px 15px 15px 60px;
+    background-image: url(/static/assets/images/Chaveiro.png);
+    background-position: 15px 10px;
+    background-repeat: no-repeat;
 }
 
 .campo-senha-repetida{
@@ -166,14 +162,14 @@ background-repeat: no-repeat;
 }
 
 .campo-senha-repetida input{
-background-color: #373737;
-border: none;
-font: 1em fonte-100;
-color: white;
-padding: 15px 15px 15px 60px;
-background-image: url(/static/assets/images/Chaveiro.png);
-background-position: 15px 10px;
-background-repeat: no-repeat;
+    background-color: #373737;
+    border: none;
+    font: 1em fonte-100;
+    color: white;
+    padding: 15px 15px 15px 60px;
+    background-image: url(/static/assets/images/Chaveiro.png);
+    background-position: 15px 10px;
+    background-repeat: no-repeat;
 }
 
 .botao-criar-conta{
@@ -182,16 +178,16 @@ background-repeat: no-repeat;
 }
 
 .botao-criar-conta button{
-color: white;
-padding: 10px 60px;
-font: 20px fonte-300;
-border-width: 2px;
-border-style: solid;
-background-color: #1f1f1f;
-border-color: #76c33c;
-border-radius: 60px;
+    color: white;
+    padding: 10px 60px;
+    font: 20px fonte-300;
+    border-width: 2px;
+    border-style: solid;
+    background-color: #1f1f1f;
+    border-color: #76c33c;
+    border-radius: 60px;
 }
 
 .botao-criar-conta button:hover{
-cursor: pointer;
+    cursor: pointer;
 }
