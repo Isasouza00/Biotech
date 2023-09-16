@@ -8,13 +8,22 @@
 </head>
 <body>
     <div class="container">
-        <form action="/cadastro" method="POST">
+        <form action="/login" method="POST">
             <div class="box_login">
                 <div class="titulo_log">Log In</div>
                 <div class="subtitulo_log">Use seu email para entrar</div>
-                <div class="campo_email"><input type="email" id="email" maxlength={32} placeholder="Email" size="40"/></div>
-                <div class="campo_senha"><input type="password" id="senha" maxlength={32} placeholder="Senha" size="40" /></div>
+                <div class="campo_email"><input type="email" name = 'login_email' id="email" maxlength={32} placeholder="Email" size="40"/></div>
+                <div class="campo_senha"><input type="password" name = 'login_senha' id="senha" maxlength={32} placeholder="Senha" size="40" /></div>
                 <div class="botao_login"> <button type="submit"> Log In </button></div>
+                {% set mensagens = get_flashed_messages() %}
+                {% if mensagens %}
+                    <!-- mudar a classe e arrumar no CSS -->
+                    <div class="titulo-right"><br>
+                        {% for msg in mensagens %}
+                            {{msg}}
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
         </form>
     </div>

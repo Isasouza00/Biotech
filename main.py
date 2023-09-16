@@ -79,15 +79,25 @@ def login():
 @app.route('/login', methods=['POST'])
 def logar():
     if request.method == 'POST':
-        cpf = request.form.get('login_cpf')
+        email = request.form.get('login_email')
         senha = request.form.get('login_senha')
         while True:
-            if (cpf == '' or senha == ''):
+            if (email == '' or senha == ''):
                 erro = 'PREENCHA TODOS OS CAMPOS'
                 flash(erro)
                 return redirect('/login')
             else:
                 break
+        if database.consultar_login(email, senha) == True:
+            return redirect('/')
+        elif database.consultar_login(email, senha) == False:
+            erro = 'Email ou senha incorretos'
+            flash(erro)
+            return redirect('/login')
+        elif database.consultar_login(email, senha) == None:
+            erro = 'Email não encontrado'
+            flash(erro)
+            return redirect('/login')
 
 # RODANDO SITE
 if __name__ == '__main__':
