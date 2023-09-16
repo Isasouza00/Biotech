@@ -64,7 +64,7 @@
     font: 1em fonte-100;
     color: white;
     padding: 15px 15px 15px 60px;
-    background-image: url(../../../assets/images/Email.png);
+    background-image: url(../assets/images/Email.png);
     background-position: 15px 10px;
     background-repeat: no-repeat;
 }
@@ -80,7 +80,7 @@
     font: 1em fonte-100;
     color: white;
     padding: 15px 15px 15px 60px;
-    background-image: url(../../../assets/images/Chaveiro.png);
+    background-image: url(../assets/images/Chaveiro.png);
     background-position: 15px 10px;
     background-repeat: no-repeat;
 }
