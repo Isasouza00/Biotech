@@ -33,8 +33,25 @@ def consultar_login(email, senha):
     else: 
         return False
 
+# VERIFICA SE É ADMIN
+def verificar_admin (email):
+    if email in "@biotec":
+        return True
+    else: 
+        return False
+    
+# CONSULTAR CONSULTAS
+def consultar_cosultas(email, senha):
+    cod_sql = 'SELECT senha from tb_usuarios WHERE email LIKE "%'+email+'%"'
+    cursor.execute(cod_sql)
+    resultado = cursor.fetchall()
+    if len(resultado) == 0:
+        return None
+    elif senha in resultado[0]:
+        return True 
+    else: 
+        return False
 # TERMINAR CRUD
-
 if __name__ == '__main__':
     cpf = input('Digite o CPF: ')
     print(ler_cpf(cpf))

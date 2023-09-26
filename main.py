@@ -89,7 +89,10 @@ def logar():
             else:
                 break
         if database.consultar_login(email, senha) == True:
-            return redirect('/')
+            if database.verificar_admin(email) == True:
+                return redirect('/administrador')
+            else:
+                return redirect('/usuario')
         elif database.consultar_login(email, senha) == False:
             erro = 'Email ou senha incorretos'
             flash(erro)
@@ -98,6 +101,21 @@ def logar():
             erro = 'Email não encontrado'
             flash(erro)
             return redirect('/login')
+
+# PÁGINA INICIAL USUÁRIO
+@app.route('/usuário')
+def usuario():
+    return render_template('usuario.html')
+
+# PÁGINA DE CONSULTAS DO USUÁRIO
+@app.route('/usuario/consultas')
+def usuario_consultas():
+    return render_template('consultas.html')
+
+# PÁGINA DE EXAMES DO USUÁRIO
+@app.route('/usuario/exames')
+def usuario_exames():
+    return render_template('exames.html')
 
 # RODANDO SITE
 if __name__ == '__main__':
