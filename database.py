@@ -41,16 +41,21 @@ def verificar_admin (email):
         return False
     
 # CONSULTAR CONSULTAS
-def consultar_cosultas(email, senha):
-    cod_sql = 'SELECT senha from tb_usuarios WHERE email LIKE "%'+email+'%"'
+def consultar_consultas(paciente):
+    cod_sql = 'SELECT * from tb_consultas WHERE paciente LIKE "%'+paciente+'%"'
     cursor.execute(cod_sql)
     resultado = cursor.fetchall()
     if len(resultado) == 0:
         return None
-    elif senha in resultado[0]:
-        return True 
     else: 
-        return False
+        return resultado
+
+# AGENDAR CONSULTAS
+def agendar(paciente, data, profissional, especialidade, observação):
+    cod_sql = '''INSERT INTO tb_consultas (paciente, data, profissional, especialidade, observação) VALUES ("{paciente}",
+    "{data}}", "{profissional}", "{especialidade}", "{observação}")'''
+    cursor.execute(cod_sql)
+
 # TERMINAR CRUD
 if __name__ == '__main__':
     cpf = input('Digite o CPF: ')
