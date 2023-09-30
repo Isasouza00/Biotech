@@ -1,3 +1,5 @@
+import hashlib 
+
 def consulta_cpf(cpf):
     cpf = str(cpf)
     digito_verificador1 = 0
@@ -41,6 +43,11 @@ def consulta_cpf(cpf):
     else:
         return False
 
+def criptografa_senha(senha):
+    hashed = hashlib.md5(senha.encode('utf-8'))
+    return hashed.hexdigest()
+
 if __name__ == '__main__':
-    cpf = input('digite cpf: ')
-    consulta_cpf(cpf)
+    senha = input('digite senha: ')
+    criptografa_senha(senha)
+    print(criptografa_senha(senha))

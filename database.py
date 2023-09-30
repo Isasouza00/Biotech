@@ -21,6 +21,12 @@ def ler_cpf(cpf):
     resultado = cursor.fetchall()
     return resultado
 
+def ler_senha():
+    comando = f'SELECT senha FROM tb_usuarios WHERE id_usuario = "1"'
+    cursor.execute(comando)
+    resultado = cursor.fetchall()
+    return print(resultado)
+
 #LOGIN
 def consultar_login(email, senha):
     cod_sql = 'SELECT senha from tb_usuarios WHERE email LIKE "%'+email+'%"'
@@ -53,10 +59,10 @@ def consultar_consultas(paciente):
 # AGENDAR CONSULTAS
 def agendar(paciente, data, profissional, especialidade, observação):
     cod_sql = '''INSERT INTO tb_consultas (paciente, data, profissional, especialidade, observação) VALUES ("{paciente}",
-    "{data}}", "{profissional}", "{especialidade}", "{observação}")'''
+    "{data}", "{profissional}", "{especialidade}", "{observação}")'''
     cursor.execute(cod_sql)
+
 
 # TERMINAR CRUD
 if __name__ == '__main__':
-    cpf = input('Digite o CPF: ')
-    print(ler_cpf(cpf))
+    ler_senha()
