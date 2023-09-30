@@ -41,7 +41,7 @@ def consultar_login(email, senha):
 
 # VERIFICA SE É ADMIN
 def verificar_admin (email):
-    if email in "@biotec":
+    if "@biotech" in email:
         return True
     else: 
         return False
@@ -65,4 +65,5 @@ def agendar(paciente, data, profissional, especialidade, observação):
 
 # TERMINAR CRUD
 if __name__ == '__main__':
-    ler_senha()
+    email = input('email: ')
+    print(verificar_admin(email))

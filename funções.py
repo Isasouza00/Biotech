@@ -1,4 +1,10 @@
-import hashlib 
+import hashlib
+import socket
+
+def obter_dominio():
+    nome_host = socket.gethostname()
+    dominio = socket.getfqdn(nome_host)
+    return dominio
 
 def consulta_cpf(cpf):
     cpf = str(cpf)
@@ -48,6 +54,4 @@ def criptografa_senha(senha):
     return hashed.hexdigest()
 
 if __name__ == '__main__':
-    senha = input('digite senha: ')
-    criptografa_senha(senha)
-    print(criptografa_senha(senha))
+    print(obter_dominio())

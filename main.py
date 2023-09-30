@@ -81,7 +81,6 @@ def logar():
     if request.method == 'POST':
         email = request.form.get('login_email')
         senha = funções.criptografa_senha(request.form.get('login_senha'))
-        print(senha)
         while True:
             if (email == '' or senha == ''):
                 erro = 'PREENCHA TODOS OS CAMPOS'
@@ -91,7 +90,12 @@ def logar():
                 break
         if database.consultar_login(email, senha) == True:
             if database.verificar_admin(email) == True:
-                return redirect('/administrador')
+                if funções.obter_dominio() == 'biotech':
+                    return redirect('/administrador')
+                else:
+                    erro = 'Você precisa estar logado(a) na empresa para acessar login de administrador'
+                    flash(erro)
+                    return redirect('/login')
             else:
                 return redirect('/usuario')
         elif database.consultar_login(email, senha) == False:
