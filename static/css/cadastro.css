@@ -33,6 +33,9 @@
 .Container{
     display: flex;
     flex-direction: row;
+
+    background-image: url(../assets/images/back_biotech.jpg);
+    background-repeat: no-repeat;
 }
 
 .box-left{
