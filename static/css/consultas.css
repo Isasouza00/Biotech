@@ -1,0 +1,90 @@
+@font-face {
+    font-family: fonte-50;
+    src: url('../assets/fonts/Montserrat-Light.woff');
+}
+
+@font-face {
+    font-family: fonte-100;
+    src: url('../assets/fonts/Montserrat-Regular.woff');
+}
+
+@font-face {
+    font-family: fonte-200;
+    src: url('../assets/fonts/Montserrat-Medium.woff');
+}
+
+@font-face {
+    font-family: fonte-300;
+    src: url('../assets/fonts/Montserrat-SemiBold.woff');
+}
+
+@font-face {
+    font-family: fonte-400;
+    src: url('../assets/fonts/Montserrat-Bold.woff');
+}
+
+body{
+    margin: 0em;
+    background-color: #0e0e0e;
+}
+
+.container_patient{
+    display: flex;
+    flex-direction: row;
+
+    background-image: url(../assets/images/back_biotech.jpg);
+    background-repeat: no-repeat;
+    backface-visibility: 0.3;
+}
+
+
+
+.title_calendar{
+    color: #99FF33;
+    font: 15px fonte-300, sans-serif;
+}
+
+
+.calendar{
+    background-color: #fff;
+
+    border-radius: 6px;
+    margin: 10px;
+    padding: 10px;
+    width: 20em;
+}
+
+.days_week{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    font-weight: bold;
+    color: #C8E7B1;
+}
+
+.days_month{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
+
+
+
+
+.log_biotech img{
+    height: 159px;
+    width: 217px;
+}
+
+.log_biotech{
+    background-image: linear-gradient(#3B621E, #0e0e0e);
+}
+
+.options_menu{
+    font: 15px fonte-300, sans-serif;
+    background-image: linear-gradient(#3B621E, #0e0e0e);
+}
