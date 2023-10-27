@@ -69,8 +69,6 @@ def cadastrar():
         confirmaçao_senha = request.form.get('confirmaçao_senha')
         return confirmaçoes(nome, cpf, email, senha, confirmaçao_senha)
 
-
-
 # PÁGINA DE LOGIN
 @app.route('/login')
 def login():
@@ -90,10 +88,10 @@ def logar():
                 break
         if database.consultar_login(email, senha) == True:
             if database.verificar_admin(email) == True:
-                if funções.obter_dominio() == 'biotech':
+                if ".senacsp.edu.br" in funções.obter_dominio():
                     return redirect('/administrador')
                 else:
-                    erro = 'Você precisa estar logado(a) na empresa para acessar login de administrador'
+                    erro = 'Você precisa estar conectado na empresa para acessar login de administrador'
                     flash(erro)
                     return redirect('/login')
             else:
