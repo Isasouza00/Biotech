@@ -73,7 +73,9 @@ body{
 
 
 
-
+.menu_patient{
+    justify-content: right;
+}
 
 .log_biotech img{
     height: 159px;
