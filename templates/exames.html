@@ -3,13 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/exames.css">
     <title>Exames_patient
     </title>
 </head>
 <body>
     <div class="container_exames_patient">
-        <div class="box_exames"></div>
-        
+        <form action="/exames_patient" method="POST">
+
+        <div class="box_exames">
+            <div class="tit_exames">Exames</div>
+            <table>
+                <tr>
+                    <td class="column_id">ID</td>
+                    <td class="column_name">Nome</td>
+                    <td class="column_type">Tipo do exame</td>
+                    <td class="column_date">Data</td>
+                </tr>
+
+                <tr>
+                    <td class="line_id">1</td>
+                    <td class="line_name">Julia Mendes Costa</td>
+                    <td class="line_type">Hemograma</td>
+                    <td class="line_date">05/08/2023 <scan class="pdf">pdf</scan></td>
+                </tr>
+            </table>
+        </div>
+
         <div class="menu_patient">
             <div class="log_biotech"><img src="../static/assets/images/logo_biotech_small.png" alt=""></div>
 
@@ -20,6 +40,7 @@
                 <div class="button_exist">Sair</div>
             </div>
         </div>
+        </form>
     </div>
 </body>
 </html>
