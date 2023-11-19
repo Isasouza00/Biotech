@@ -30,6 +30,11 @@
     box-sizing: border-box;
 }
 
+.container{
+    background-image: url(../assets/images/back_biotech.png);
+    background-repeat: no-repeat;
+}
+
 .box_login{
     display: flex;
     flex-direction: column;
