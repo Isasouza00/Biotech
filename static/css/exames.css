@@ -1,3 +1,76 @@
+@font-face {
+    font-family: fonte-50;
+    src: url('../assets/fonts/Montserrat-Light.woff');
+}
+
+@font-face {
+    font-family: fonte-100;
+    src: url('../assets/fonts/Montserrat-Regular.woff');
+}
+
+@font-face {
+    font-family: fonte-200;
+    src: url('../assets/fonts/Montserrat-Medium.woff');
+}
+
+@font-face {
+    font-family: fonte-300;
+    src: url('../assets/fonts/Montserrat-SemiBold.woff');
+}
+
+@font-face {
+    font-family: fonte-400;
+    src: url('../assets/fonts/Montserrat-Bold.woff');
+}
+
+
+body{
+    margin: 0px;
+}
+
+.container_exames_patient{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+
+    background-image: url(../assets/images/back_biotech.png);
+    background-repeat: no-repeat;
+    backface-visibility: 0.3;
+    background-size: 100em 60em;
+}
+
+.box_exames{
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.tit_exames{
+    display: flex;
+    flex-direction: row;
+    
+    color: #fff;
+    font: 18px font-400, sans-serif;
+}
+
+.tit_exames hr{
+    border: 3px solid #99FF33;
+
+    width: 0.2px;
+    height: 43px;
+
+    margin: 0px;
+}
+
+.tit_exames b{
+    padding: 12px 0px 0px 5px;
+}
+
+
+
+
+
+
 .box_exames table {
     display: block;
 }
@@ -26,7 +99,7 @@
     height: 30.9em;
 }
 
-.exams{
+.appointment{
     display: flex;
     flex-direction: row;
 
@@ -34,11 +107,10 @@
     font: 18px fonte-300, sans-serif;
     background-color: rgba(255, 255, 255, 0.3);
 
-    padding: 0px 0px 0px 0px;
     margin-top: 5px;
 }
 
-.exams hr{
+.appointment hr{
     border: 3px solid #99FF33;
 
     width: 0.2px;
@@ -47,11 +119,11 @@
     margin: 0px;
 }
 
-.exams span{
-    padding: 12px 0px 12px 15px;
+.appointment span{
+    padding: 12px 12px 0px 0px;
 }
 
-.appointment{
+.exams{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -64,7 +136,7 @@
     margin-top: 5px;
 }
 
-.appointment svg{
+.exams svg{
     padding: 0px 20px 0px 0px;
 }
 
