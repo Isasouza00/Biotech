@@ -32,26 +32,37 @@ body{
     display: flex;
     flex-direction: row;
 
+    justify-content: space-between;
+
     background-image: url(../assets/images/back_biotech.png);
     background-repeat: no-repeat;
     backface-visibility: 0.3;
+    background-size: 100em 60em;
 }
 
 
 
 .title_calendar{
+    text-align: center;
+    justify-content: center;
+
     color: #99FF33;
-    font: 15px fonte-300, sans-serif;
+    font: 40px fonte-300, sans-serif;
+
+    padding: 40px;
+    margin: 0em 0em 0em 5em;
 }
 
 
 .calendar{
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.3);
 
-    border-radius: 6px;
-    margin: 10px;
+    border-radius: 8px;
+
+    margin: 2em 0em 0em 18em;
     padding: 10px;
-    width: 20em;
+
+    width: 35em;
 }
 
 .days_week{
@@ -59,25 +70,166 @@ body{
     flex-direction: row;
     justify-content: space-around;
 
-    font-weight: bold;
     color: #C8E7B1;
+    font-weight: bold;
+    font: 18px font-400, sans-serif;
+
+    margin: 1em 0em;
 }
 
 .days_month{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+
+    margin: 1.5em 0em 0em 0em;
 }
+
+.days_month button{
+    color: #fff;
+    font: 18px font-400, sans-serif;
+    background-color: transparent;
+
+    border: transparent;
+}
+
+.one{
+    background-color: #3B621E;
+
+    border-radius: 20px;
+
+    margin: 0em 2.8em 3em 1.5em;
+    padding: 9px;
+}
+
+.two{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+    margin: 0em 2em 0em 0em;
+}
+
+.three{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+    margin: 0em 2.8em 0em 0em;
+}
+
+.four{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+}
+
+.five{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+    margin: 0em 3em 0em 2.5em;
+}
+
+.seven{
+    margin: 0em 1em 0em 3.5em;
+}
+
+.eigth{
+    background-color: #3B621E;
+
+    border-radius: 20px;
+
+    margin: 0em 3em 3em 1.7em;
+    padding: 10px 11px;
+}
+
+.ten{
+    margin: 0em 3em 0em 3.3em;
+}
+
+.twelve{
+    margin: 0em 2.9em 0em 2.9em;
+}
+
+.thirteen{
+    margin: 0em 2.7em 0em 0em;
+}
+
+.fifteen{
+    background-color: #3B621E;
+
+    border-radius: 23px;
+
+    margin: 0em 3em 3em 1.4em;
+    padding: 9px 7px 8px 7px;
+}
+
+.seventeen{
+    margin: 0em 2.9em 0em 3.1em;
+}
+
+.nineteen{
+    margin: 0em 3em 0em 2.9em;
+}
+
+.twenty{
+    margin: 0em 2.8em 0em 0em;
+}
+
+.twenty-two{
+    background-color: #3B621E;
+
+    border-radius: 23px;
+
+    padding: 9px 7px 8px 7px;
+    margin: 0em 3.3em 3em 1.5em;
+}
+
+.twenty-four{
+    margin: 0em 3em 0em 3em;
+}
+
+.twenty-six{
+    margin: 0em 2.8em 0em 3em;
+}
+
+.twenty-seven{
+    margin: 0em 2.7em 0em 0em;
+}
+
+.twenty-nine{
+    background-color: #3B621E;
+
+    border-radius: 23px;
+
+    padding: 9px 7px 8px 7px;
+    margin: 0em 2.3em 2em 1.5em;
+}
+
+.thirty{
+    margin: 0em 3em 0em 0.3em;
+}
+
 
 
 
 
 .menu_patient{
     justify-content: right;
+
+    margin-left: 4em;
 }
 
 .log_biotech img{
+    padding: 2em;
+
     height: 159px;
     width: 217px;
 }
@@ -89,4 +241,63 @@ body{
 .options_menu{
     font: 15px fonte-300, sans-serif;
     background-image: linear-gradient(#3B621E, #0e0e0e);
+
+    height: 30.9em;
+}
+
+.exams{
+    display: flex;
+    flex-direction: row;
+
+    color: #fff;
+    font: 18px fonte-300, sans-serif;
+    background-color: rgba(255, 255, 255, 0.3);
+
+    padding: 0px 0px 0px 0px;
+    margin-top: 5px;
+}
+
+.exams hr{
+    border: 3px solid #99FF33;
+
+    width: 0.2px;
+    height: 43px;
+
+    margin: 0px;
+}
+
+.exams span{
+    padding: 12px 0px 12px 15px;
+}
+
+.appointment{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    color: #fff;
+    font: 18px fonte-300, sans-serif;
+    background-color: #99FF33;
+
+    padding: 12px 0px 12px 20px;
+    margin-top: 5px;
+}
+
+.appointment svg{
+    padding: 0px 20px 0px 0px;
+}
+
+.button_exist{
+    text-align: right;
+
+    margin-top: 21em;
+}
+
+.button_exist button{
+    color: #fff;
+    font: 18px fonte-100, sans-serif;
+    text-decoration: underline;
+    background-color: transparent;
+
+    border: transparent;
 }
