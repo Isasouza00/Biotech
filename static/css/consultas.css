@@ -35,9 +35,9 @@ body{
     justify-content: space-between;
 
     background-image: url(../assets/images/back_biotech.png);
+    background-size: 100%;
     background-repeat: no-repeat;
     backface-visibility: 0.3;
-    background-size: 100em 60em;
 }
 
 
@@ -134,11 +134,24 @@ body{
     border-radius: 20px;
 
     padding: 9px;
-    margin: 0em 3em 0em 2.5em;
+    margin: 0em 2.5em 0em 2.5em;
+}
+
+.six{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
 }
 
 .seven{
-    margin: 0em 1em 0em 3.5em;
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+    margin: 0em 0em 0em 2.5em;
 }
 
 .eigth{
@@ -146,20 +159,59 @@ body{
 
     border-radius: 20px;
 
-    margin: 0em 3em 3em 1.7em;
+    margin: 0em 3em 3em 1.5em;
     padding: 10px 11px;
 }
 
+.nine{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+}
+
 .ten{
-    margin: 0em 3em 0em 3.3em;
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+    margin: 0em 2.2em 0em 1.4em;
+}
+
+.eleven{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
 }
 
 .twelve{
-    margin: 0em 2.9em 0em 2.9em;
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+    margin: 0em 1.9em 0em 1.8em;
 }
 
 .thirteen{
-    margin: 0em 2.7em 0em 0em;
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+    margin: 0em 1.8em 0em 0em;
+}
+
+.fourteen{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
 }
 
 .fifteen{
@@ -167,12 +219,25 @@ body{
 
     border-radius: 23px;
 
-    margin: 0em 3em 3em 1.4em;
+    margin: 0em 2.6em 3em 1.4em;
     padding: 9px 7px 8px 7px;
 }
 
+.sixteen{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+}
+
 .seventeen{
-    margin: 0em 2.9em 0em 3.1em;
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+    margin: 0em 2.9em 0em 2em;
 }
 
 .nineteen{
@@ -248,13 +313,22 @@ body{
 .exams{
     display: flex;
     flex-direction: row;
-
-    color: #fff;
-    font: 18px fonte-300, sans-serif;
+    
     background-color: rgba(255, 255, 255, 0.3);
 
-    padding: 0px 0px 0px 0px;
     margin-top: 5px;
+}
+
+.exams a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.exams button{
+    font: 18px fonte-300, sans-serif;
+    background-color: transparent;
+
+    border: transparent;
 }
 
 .exams hr{
@@ -267,7 +341,7 @@ body{
 }
 
 .exams span{
-    padding: 12px 0px 12px 15px;
+    padding: 12px 12px 0px 12px;
 }
 
 .appointment{
@@ -291,6 +365,7 @@ body{
     text-align: right;
 
     margin-top: 21em;
+    margin-right: 1em;
 }
 
 .button_exist button{

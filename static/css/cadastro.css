@@ -35,6 +35,7 @@
     flex-direction: row;
 
     background-image: url(../assets/images/back_biotech.jpg);
+    background-size: 100%;
     background-repeat: no-repeat;
 }
 
