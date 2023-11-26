@@ -28,7 +28,7 @@ body{
     margin: 0px;
 }
 
-.container_exames_patient{
+.container_exames_adm{
     display: flex;
     flex-direction: row;
 
@@ -50,7 +50,7 @@ body{
     display: block;
 }
 
-.menu_patient{
+.menu_adm{
     justify-content: right;
 
     margin-left: 4em;
@@ -73,6 +73,41 @@ body{
 
     height: 30.9em;
 }
+
+.patient{
+    display: flex;
+    flex-direction: row;
+
+    background-color: rgba(255, 255, 255, 0.3);
+
+    margin-top: 5px;
+}
+
+.patient a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.patient button{
+    font: 18px fonte-300, sans-serif;
+    background-color: transparent;
+
+    border: transparent;
+}
+
+.patient hr{
+    border: 3px solid #76C33C;
+
+    width: 0.2px;
+    height: 43px;
+
+    margin: 0px;
+}
+
+.patient span{
+    padding: 12px 12px 0px 12px;
+}
+
 
 .appointment{
     display: flex;
