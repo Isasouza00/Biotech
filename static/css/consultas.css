@@ -300,12 +300,12 @@ body{
 }
 
 .log_biotech{
-    background-image: #3B621E;
+    background-color: #3B621E;
 }
 
 .options_menu{
     font: 15px fonte-300, sans-serif;
-    background-image: #3B621E;
+    background-color: #3B621E;
 
     height: 30.9em;
 }
