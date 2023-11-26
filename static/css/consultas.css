@@ -300,12 +300,12 @@ body{
 }
 
 .log_biotech{
-    background-color: #3B621E;
+    background-color: #1e1e1e;
 }
 
 .options_menu{
     font: 15px fonte-300, sans-serif;
-    background-color: #3B621E;
+    background-color: #1e1e1e;
 
     height: 30.9em;
 }
@@ -315,8 +315,6 @@ body{
     flex-direction: row;
     
     background-color: rgba(255, 255, 255, 0.3);
-
-    margin-top: 5px;
 }
 
 .exams a{

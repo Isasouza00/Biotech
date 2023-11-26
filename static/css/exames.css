@@ -163,14 +163,10 @@ tbody::-webkit-scrollbar-thumb {
 
 
 
-.box_exames table {
-    display: block;
-}
-
 .menu_patient{
     justify-content: right;
 
-    margin-left: 4em;
+    margin-left: 6.5em;
 }
 
 .log_biotech img{
@@ -194,10 +190,8 @@ tbody::-webkit-scrollbar-thumb {
 .appointment{
     display: flex;
     flex-direction: row;
-
+    
     background-color: rgba(255, 255, 255, 0.3);
-
-    margin-top: 5px;
 }
 
 .appointment a{

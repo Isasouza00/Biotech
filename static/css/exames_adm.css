@@ -64,12 +64,12 @@ body{
 }
 
 .log_biotech{
-    background-image: linear-gradient(#3B621E, #0e0e0e);
+    background-image: #1e1e1e;
 }
 
 .options_menu{
     font: 15px fonte-300, sans-serif;
-    background-image: linear-gradient(#3B621E, #0e0e0e);
+    background-image: #1e1e1e;
 
     height: 30.9em;
 }
