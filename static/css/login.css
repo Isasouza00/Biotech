@@ -90,6 +90,14 @@
     background-repeat: no-repeat;
 }
 
+.avisos{
+    color: #76c33c;
+    font: 1em fonte-300;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
 .botao_login{
     text-align: center;
     padding-top: 2em;
