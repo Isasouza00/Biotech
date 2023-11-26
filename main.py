@@ -91,13 +91,12 @@ def logar():
         if database.consultar_login(email, senha) == True:
             if database.verificar_admin(email) == True:
                 if ".senacsp.edu.br" in funções.obter_dominio():
-                    return redirect(url_for('consultas_adm', usuario = funções.url_usuario(email)+000000000000)), nome
-                else:
+                    return redirect(url_for('consultas_adm', usuario = funções.url_usuario(email)+000000000000))
                     erro = 'Você precisa estar conectado na empresa para acessar login de administrador'
                     flash(erro)
                     return redirect('/login')
             else:
-                return redirect(url_for('consultas', usuario = funções.url_usuario(email))), nome
+                return redirect(url_for('consultas', usuario = funções.url_usuario(email)))
         elif database.consultar_login(email, senha) == False:
             erro = 'Email ou senha incorretos'
             flash(erro)
@@ -107,12 +106,13 @@ def logar():
             flash(erro)
             return redirect('/login')
 
-g_nome = logar()[1]
+# g_nome = logar()[1]
 
 # PÁGINA DE CONSULTAS DO USUÁRIO
 @app.route('/<usuario>/consultas')
 def consultas(usuario):
-    return render_template('consultas.html')
+    lista_exames = database.lista_exames()
+    return render_template('consultas.html', lista_exames=lista_exames)
 
 # @app.route('/<usuario>/consultas', methods=['POST'])
 # def marcar():
@@ -125,7 +125,7 @@ def consultas(usuario):
 # PÁGINA DE EXAMES DO USUÁRIO
 @app.route('/<usuario>/exames')
 def exames(usuario):
-    database.recolher_exames(g_nome)
+    # database.recolher_exames(g_nome)
     return render_template('exames.html')
 
 

@@ -62,9 +62,9 @@
         <div class="container_menu_consultas">
             <span class="especialidade"><button>Especialidade</button></span>
             <ul class="especialidade_menu">
-                <li>Dermatologia</li>
-                <li>Clínica</li>
-                <li>Ginicologia</li>
+                {% for exame in lista_exames %}
+                    <li>{{ exame }}</li>
+                {% endfor %}
             </ul>
             <div class="hora"><button>Horários</button></div>
         </div>

@@ -2,7 +2,6 @@ import hashlib
 import socket
 import database
 
-
 def obter_dominio():
     nome_host = socket.gethostname()
     dominio = socket.getfqdn(nome_host)
@@ -64,7 +63,7 @@ def url_usuario(email):
 #         return 0
 #     else: return 1
 # if __name__ == '__main__':
-#     print(verificar_horario(database.consultar_horarios('Dr. Ricardo Santos')[0], database.consultar_horarios('Dr. Ricardo Santos')[1]))
+#     print(horarios())
 
 
 
