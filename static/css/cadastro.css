@@ -101,6 +101,14 @@
     padding-bottom: 10px;
 }
 
+.avisos{
+    color: #76c33c;
+    font: 1em fonte-300;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
 .sub-titulo-right{
     font: 1.5em fonte-50;
     text-align: center;
