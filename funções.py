@@ -1,5 +1,7 @@
 import hashlib
 import socket
+import database
+
 
 def obter_dominio():
     nome_host = socket.gethostname()
@@ -57,5 +59,41 @@ def url_usuario(email):
     hashed = hashlib.md5(email.encode('utf-8'))
     return hashed.hexdigest()
 
+def verificar_horario(datas_formatadas, horarios_formatados):
+    if datas_formatadas in data_escolhida and horarios_formatados in horario_escolhido:
+        return 0
+    else: return 1
 if __name__ == '__main__':
-    print(obter_dominio())
+    print(verificar_horario(database.consultar_horarios('Dr. Ricardo Santos')[0], database.consultar_horarios('Dr. Ricardo Santos')[1]))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

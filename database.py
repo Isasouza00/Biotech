@@ -1,5 +1,6 @@
 # IMPORTANDO BIBLIOTECAS
 import mysql.connector
+import datetime
 
 # CONECTANDO AO DB BIOTECH
 conexao = mysql.connector.connect(host='localhost', user='root',
@@ -62,8 +63,35 @@ def agendar(paciente, data, profissional, especialidade, observação):
     "{data}", "{profissional}", "{especialidade}", "{observação}")'''
     cursor.execute(cod_sql)
 
+# Consultar horários
+def consultar_horarios(profissional):
+    cod_sql = 'SELECT data, horario from tb_consultas WHERE profissional LIKE "%'+profissional+'%"'
+    cursor.execute(cod_sql)
+    resultado = cursor.fetchall()
+    lista_datas = []
+    lista_horarios = []
+    for c in range (0, len(resultado)):
+        acesso = resultado[c]
+        data = acesso[0]
+        horario = acesso[1]
+        lista_datas.append(data)
+        lista_horarios.append(horario)
+    datas_formatadas = [data.strftime('%Y-%m-%d') for data in lista_datas]
+    lista_segundos = [str(int(t.total_seconds())) for t in lista_horarios]
+    horarios_formatados = [str(datetime.timedelta(seconds=int(s))) for s in lista_segundos]
+    horarios_formatados = [':'.join(h.split(':')[:2]) for h in horarios_formatados]
+    return datas_formatadas, horarios_formatados
+
+#Consultar nome
+def consultar_nome(paciente):
+    cod_sql = 'SELECT nome from tb_usuarios WHERE paciente LIKE "%'+paciente+'%"'
+    cursor.execute(cod_sql)
+    resultado = cursor.fetchall()
+    if len(resultado) == 0:
+        return False
+    else: 
+        return True
 
 # TERMINAR CRUD
 if __name__ == '__main__':
-    email = input('email: ')
-    print(verificar_admin(email))
+    print(consultar_horarios('Dr. Ricardo Santos'))

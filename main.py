@@ -89,7 +89,7 @@ def logar():
         if database.consultar_login(email, senha) == True:
             if database.verificar_admin(email) == True:
                 if ".senacsp.edu.br" in funções.obter_dominio():
-                    return redirect(url_for('consultas_adm', usuario = 000000000000))
+                    return redirect(url_for('consultas_adm', usuario = funções.url_usuario(email)+000000000000))
                 else:
                     erro = 'Você precisa estar conectado na empresa para acessar login de administrador'
                     flash(erro)
@@ -110,6 +110,14 @@ def logar():
 def consultas(usuario):
     return render_template('consultas.html')
 
+# @app.route('/<usuario>/consultas', methods=['POST'])
+# def marcar():
+#     # capturar dados do formulário
+#     horario = funções.verificar_horario(database.consultar_horarios(profissional)[0], database.consultar_horarios(profissional)[1])
+#     if horario == 0:
+#         vai sumir
+#     else: roda função de marcar
+
 # PÁGINA DE EXAMES DO USUÁRIO
 @app.route('/<usuario>/exames')
 def exames(usuario):
@@ -125,6 +133,25 @@ def exames_adm(usuario):
     if usuario == 000000000000:
         return render_template('exames_adm.html')
     else: return render_template('login.html')
+
+@app.route('/<usuario>/exames_adm', methods=['POST'])
+def lançar_exame():
+    if request.method == 'POST':
+            # capturar dados do formulário
+        while True:
+            if (paciente == '' or tipo_de_exame == '' or exame = ''):
+                erro = 'PREENCHA TODOS OS CAMPOS'
+                flash(erro)
+                return redirect(url_for('lançar_exame')) #talvez aqui tenha que vir o link dinâmico do usuário
+            else:
+                break
+        if database.consultar_nome == False:
+            erro = 'ESSE PACIENTE NÃO EXISTE'
+            flash(erro)
+            return redirect(url_for('lançar_exame')) #talvez aqui tenha que vir o link dinâmico do usuário
+        else:
+            #roda função pra colocar exame no DB
+
 # RODANDO SITE
 if __name__ == '__main__':
     app.run(debug=True)
