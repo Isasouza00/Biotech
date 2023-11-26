@@ -33,6 +33,10 @@
 .Container{
     display: flex;
     flex-direction: row;
+
+    background-image: url(../assets/images/back_biotech.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .box-left{
@@ -80,12 +84,9 @@
 .box-right{
     display: flex;
     flex-direction: column;
-    
-    background-image: url(../assets/images/back_biotech.png);
-    background-size: 100%;
-    background-repeat: no-repeat;
 
     color: white;
+
 
     align-items: center;
     justify-content: center;
