@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, flash
+from flask import Flask, render_template, redirect, request, flash, url_for
 import database
 import funções
 
@@ -50,7 +50,7 @@ app.config['SECRET_KEY'] = "BIOTECH"
 # PÁGINA HOME
 @app.route('/')
 def home():
-    return render_template('login.html')
+    return render_template('cadastro.html')
 
 # PÁGINA DE CADASTRO
 @app.route('/cadastro')
@@ -89,13 +89,13 @@ def logar():
         if database.consultar_login(email, senha) == True:
             if database.verificar_admin(email) == True:
                 if ".senacsp.edu.br" in funções.obter_dominio():
-                    return redirect('/administrador')
+                    return redirect(url_for('consultas_adm', usuario = 000000000000))
                 else:
                     erro = 'Você precisa estar conectado na empresa para acessar login de administrador'
                     flash(erro)
                     return redirect('/login')
             else:
-                return redirect('/usuario')
+                return redirect(url_for('consultas', usuario = funções.url_usuario(email)))
         elif database.consultar_login(email, senha) == False:
             erro = 'Email ou senha incorretos'
             flash(erro)
@@ -104,22 +104,27 @@ def logar():
             erro = 'Email não encontrado'
             flash(erro)
             return redirect('/login')
-
-# PÁGINA INICIAL USUÁRIO
-@app.route('/usuário')
-def usuario():
-    return render_template('usuario.html')
-
+        
 # PÁGINA DE CONSULTAS DO USUÁRIO
-@app.route('/usuario/consultas')
-def usuario_consultas():
+@app.route('/<usuario>/consultas')
+def consultas(usuario):
     return render_template('consultas.html')
 
 # PÁGINA DE EXAMES DO USUÁRIO
-@app.route('/usuario/exames')
-def usuario_exames():
+@app.route('/<usuario>/exames')
+def exames(usuario):
     return render_template('exames.html')
 
+@app.route('/<usuario>/consultas_adm')
+def consultas_adm(usuario):
+    return render_template('consultas_adm.html')
+
+# IMPLEMENTAR DIGITOO VERIFICADOR!
+@app.route('/<usuario>/exames_adm')
+def exames_adm(usuario):
+    if usuario == 000000000000:
+        return render_template('exames_adm.html')
+    else: return render_template('login.html')
 # RODANDO SITE
 if __name__ == '__main__':
     app.run(debug=True)

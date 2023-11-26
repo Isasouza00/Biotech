@@ -53,5 +53,9 @@ def criptografa_senha(senha):
     hashed = hashlib.md5(senha.encode('utf-8'))
     return hashed.hexdigest()
 
+def url_usuario(email):
+    hashed = hashlib.md5(email.encode('utf-8'))
+    return hashed.hexdigest()
+
 if __name__ == '__main__':
     print(obter_dominio())
