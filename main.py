@@ -139,7 +139,7 @@ def lançar_exame():
     if request.method == 'POST':
             # capturar dados do formulário
         while True:
-            if (paciente == '' or tipo_de_exame == '' or exame = ''):
+            if paciente == '' or tipo_de_exame == '' or exame == '':
                 erro = 'PREENCHA TODOS OS CAMPOS'
                 flash(erro)
                 return redirect(url_for('lançar_exame')) #talvez aqui tenha que vir o link dinâmico do usuário
