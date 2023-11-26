@@ -84,14 +84,33 @@ def consultar_horarios(profissional):
 
 #Consultar nome
 def consultar_nome(paciente):
-    cod_sql = 'SELECT nome from tb_usuarios WHERE paciente LIKE "%'+paciente+'%"'
+    cod_sql = 'SELECT nome from tb_usuarios WHERE nome LIKE "%'+paciente+'%"'
     cursor.execute(cod_sql)
     resultado = cursor.fetchall()
     if len(resultado) == 0:
         return False
     else: 
         return True
+    
+#Consultar nome
+def consultar_nome_por_email(email):
+    cod_sql = 'SELECT nome from tb_usuarios WHERE email LIKE "%'+email+'%"'
+    cursor.execute(cod_sql)
+    resultado = cursor.fetchall()
+    return resultado
+
+def inserir_exames(paciente, data, profissional, tipo_exame, exame):
+    comando = f'INSERT INTO tb_exames (paciente, data, profissional, tipo_exame, exame) VALUES ("{paciente}", "{data}", 
+    "{profissional}", "{tipo_exame}", "{exame}")'
+    cursor.execute(comando)
+    conexao.commit()
+
+def recolher_exames(nome):
+    cod_sql = 'SELECT * from tb_exames WHERE paciente LIKE "%'+nome+'%"'
+    cursor.execute(cod_sql)
+    resultado = cursor.fetchall()
+    return resultado
 
 # TERMINAR CRUD
 if __name__ == '__main__':
-    print(consultar_horarios('Dr. Ricardo Santos'))
+    print(consultar_nome_por_email('matheus04chagas@gmail.com'))
