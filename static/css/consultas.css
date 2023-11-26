@@ -286,6 +286,15 @@ body{
 
 
 
+.container_menu_consultas{
+    color:#fff;
+    text-decoration: none;
+}
+
+
+
+
+
 .menu_patient{
     justify-content: right;
 
