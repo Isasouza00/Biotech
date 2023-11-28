@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/login.css">
+    <title> Formulário </title>
+</head>
+<body>
+    <div class="container">
+        <form action="/formulario" method="POST">
+            <div class="box_form">
+                <div class="titulo_log">Log In</div>
+                <div class="subtitulo_log">Use seu email para entrar</div>
+                <div class="data_exame"><input type="date" id="datemax" name="datemax" max="2023-11-01"/></div>
+                <div class="campo_senha"><input type="password" name = 'login_senha' id="senha" maxlength={32} placeholder="Senha" size="40" /></div>
+                <div class="botao_login"> <button type="submit"> Log In </button></div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
