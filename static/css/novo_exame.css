@@ -1,0 +1,147 @@
+@font-face {
+    font-family: fonte-50;
+    src: url('../assets/fonts/Montserrat-Light.woff');
+}
+
+@font-face {
+    font-family: fonte-100;
+    src: url('../assets/fonts/Montserrat-Regular.woff');
+}
+
+@font-face {
+    font-family: fonte-200;
+    src: url('../assets/fonts/Montserrat-Medium.woff');
+}
+
+@font-face {
+    font-family: fonte-300;
+    src: url('../assets/fonts/Montserrat-SemiBold.woff');
+}
+
+@font-face {
+    font-family: fonte-400;
+    src: url('../assets/fonts/Montserrat-Bold.woff');
+}
+
+
+
+*{
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.container{
+    background-image: url(../assets/images/back_biotech.png);
+    background-size: 100%; 
+    background-repeat: no-repeat;
+}
+
+.box_form{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    color: white;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo_form{
+    color: #76c33c;
+    font: 2em fonte-300;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.subtitulo_form{
+    font: 1.5em fonte-50;
+    text-align: center;
+}
+
+.esp_exame{
+    margin: 3em 0px 0px 0em;
+    text-align: center;
+}
+
+.esp_exame select{
+    background-color: #373737;
+    border: none;
+    font: 1em fonte-100;
+    color: white;
+    padding: 15px 15px 15px 60px;
+    background-image: url(../assets/images/Email.png);
+    background-position: 15px 10px;
+    background-repeat: no-repeat;
+}
+
+.data_exame{
+    margin: 1em 0px 0px 0em;
+    text-align: center;
+}
+
+.data_exame input{
+    background-color: #373737;
+    border: none;
+    font: 1em fonte-100;
+    color: white;
+    padding: 15px 15px 15px 60px;
+    background-image: url(../assets/images/calendar.png);
+    background-size: 30px;
+    background-position: 15px 10px;
+    background-repeat: no-repeat;
+}
+
+.nome_usu{
+    margin: 1em 0px 0px 0em;
+    text-align: center;
+}
+
+.nome_usu input{
+    background-color: #373737;
+    border: none;
+    font: 1em fonte-100;
+    color: white;
+    padding: 15px 15px 15px 60px;
+    background-image: url(../assets/images/Usuario-2.png);
+    background-size: 30px;
+    background-position: 15px 10px;
+    background-repeat: no-repeat;
+}
+
+
+.url_pdf{
+    margin: 1em 0px 0px 0em;
+    text-align: center;
+}
+
+.url_pdf input{
+    background-color: #373737;
+    border: none;
+    font: 1em fonte-100;
+    color: white;
+    padding: 15px 15px 15px 60px;
+    background-image: url(../assets/images/web.png);
+    background-size: 30px;
+    background-position: 15px 10px;
+    background-repeat: no-repeat;
+}
+
+.botao_form{
+    text-align: center;
+    padding-top: 2em;
+}
+
+.botao_form button{
+    color: white;
+    padding: 10px 60px;
+    font: 20px fonte-300;
+    border-width: 2px;
+    border-style: solid;
+    background-color: #1f1f1f;
+    border-color: #76c33c;
+    border-radius: 60px;
+}
+
+.botao_form button:hover{
+    cursor: pointer;
+}
