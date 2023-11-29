@@ -1,0 +1,385 @@
+@font-face {
+    font-family: fonte-50;
+    src: url('../assets/fonts/Montserrat-Light.woff');
+}
+
+@font-face {
+    font-family: fonte-100;
+    src: url('../assets/fonts/Montserrat-Regular.woff');
+}
+
+@font-face {
+    font-family: fonte-200;
+    src: url('../assets/fonts/Montserrat-Medium.woff');
+}
+
+@font-face {
+    font-family: fonte-300;
+    src: url('../assets/fonts/Montserrat-SemiBold.woff');
+}
+
+@font-face {
+    font-family: fonte-400;
+    src: url('../assets/fonts/Montserrat-Bold.woff');
+}
+
+body{
+    margin: 0em;
+    background-color: #0e0e0e;
+}
+
+.container_patient{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+
+    background-image: url(../assets/images/back_biotech.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    backface-visibility: 0.3;
+}
+
+
+
+.title_calendar{
+    text-align: center;
+    justify-content: center;
+
+    color: #99FF33;
+    font: 40px fonte-300, sans-serif;
+
+    padding: 40px;
+    margin: 0em 0em 0em 5em;
+}
+
+
+.calendar{
+    background-color: rgba(255, 255, 255, 0.3);
+
+    border-radius: 8px;
+
+    margin: 2em 0em 0em 18em;
+    padding: 10px;
+
+    width: 35em;
+}
+
+.days_week{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    color: #C8E7B1;
+    font-weight: bold;
+    font: 18px font-400, sans-serif;
+
+    margin: 1em 0em;
+}
+
+.days_month{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    margin: 1.5em 0em 0em 0em;
+}
+
+.days_month button{
+    color: #fff;
+    font: 18px font-400, sans-serif;
+    background-color: transparent;
+
+    border: transparent;
+}
+
+.one{
+    background-color: #3B621E;
+
+    border-radius: 20px;
+
+    margin: 0em 2.8em 3em 1.5em;
+    padding: 9px;
+}
+
+.two{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+    margin: 0em 2em 0em 0em;
+}
+
+.three{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+    margin: 0em 2.8em 0em 0em;
+}
+
+.four{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+}
+
+.five{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+    margin: 0em 2.5em 0em 2.5em;
+}
+
+.six{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+}
+
+.seven{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+    margin: 0em 0em 0em 2.5em;
+}
+
+.eigth{
+    background-color: #3B621E;
+
+    border-radius: 20px;
+
+    margin: 0em 3em 3em 1.5em;
+    padding: 10px 11px;
+}
+
+.nine{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+}
+
+.ten{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+    margin: 0em 2.2em 0em 1.4em;
+}
+
+.eleven{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+}
+
+.twelve{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+    margin: 0em 1.9em 0em 1.8em;
+}
+
+.thirteen{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+    margin: 0em 1.8em 0em 0em;
+}
+
+.fourteen{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+}
+
+.fifteen{
+    background-color: #3B621E;
+
+    border-radius: 23px;
+
+    margin: 0em 2.6em 3em 1.4em;
+    padding: 9px 7px 8px 7px;
+}
+
+.sixteen{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+}
+
+.seventeen{
+    background-color: transparent;
+
+    border-radius: 20px;
+
+    padding: 9px;
+    margin: 0em 2.9em 0em 2em;
+}
+
+.nineteen{
+    margin: 0em 3em 0em 2.9em;
+}
+
+.twenty{
+    margin: 0em 2.8em 0em 0em;
+}
+
+.twenty-two{
+    background-color: #3B621E;
+
+    border-radius: 23px;
+
+    padding: 9px 7px 8px 7px;
+    margin: 0em 3.3em 3em 1.5em;
+}
+
+.twenty-four{
+    margin: 0em 3em 0em 3em;
+}
+
+.twenty-six{
+    margin: 0em 2.8em 0em 3em;
+}
+
+.twenty-seven{
+    margin: 0em 2.7em 0em 0em;
+}
+
+.twenty-nine{
+    background-color: #3B621E;
+
+    border-radius: 23px;
+
+    padding: 9px 7px 8px 7px;
+    margin: 0em 2.3em 2em 1.5em;
+}
+
+.thirty{
+    margin: 0em 3em 0em 0.3em;
+}
+
+
+
+
+
+.container_menu_consultas{
+    color:#fff;
+    text-decoration: none;
+}
+
+
+
+
+
+.menu_patient{
+    justify-content: right;
+
+    margin-left: 4em;
+}
+
+.log_biotech img{
+    padding: 2em;
+
+    height: 159px;
+    width: 217px;
+}
+
+.log_biotech{
+    background-color: #1e1e1e;
+}
+
+.options_menu{
+    font: 15px fonte-300, sans-serif;
+    background-color: #1e1e1e;
+
+    height: 30.9em;
+}
+
+.exams{
+    display: flex;
+    flex-direction: row;
+    
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.exams a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.exams button{
+    font: 18px fonte-300, sans-serif;
+    background-color: transparent;
+
+    border: transparent;
+}
+
+.exams hr{
+    border: 3px solid #76C33C;
+
+    width: 0.2px;
+    height: 43px;
+
+    margin: 0px;
+}
+
+.exams span{
+    padding: 12px 12px 0px 12px;
+}
+
+.appointment{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    color: #fff;
+    font: 18px fonte-300, sans-serif;
+    background-color: #76C33C;
+
+    padding: 12px 0px 12px 20px;
+    margin-top: 5px;
+}
+
+.appointment svg{
+    padding: 0px 20px 0px 0px;
+}
+
+.button_exist{
+    text-align: right;
+
+    margin-top: 21em;
+    margin-right: 1em;
+}
+
+.button_exist button{
+    color: #fff;
+    font: 18px fonte-100, sans-serif;
+    text-decoration: underline;
+    background-color: transparent;
+
+    border: transparent;
+}
