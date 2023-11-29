@@ -58,12 +58,12 @@
     text-align: center;
 }
 
-.esp_exame{
+.esp_consulta{
     margin: 3em 0px 0px 0em;
     text-align: center;
 }
 
-.esp_exame select{
+.esp_consulta select{
     background-color: #373737;
     border: none;
     font: 1em fonte-100;
@@ -75,12 +75,12 @@
     background-repeat: no-repeat;
 }
 
-.data_exame{
+.data_consulta{
     margin: 1em 0px 0px 0em;
     text-align: center;
 }
 
-.data_exame input{
+.data_consulta input{
     background-color: #373737;
     border: none;
     font: 1em fonte-100;
