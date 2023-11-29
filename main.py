@@ -1,5 +1,4 @@
 from flask import Flask, render_template, redirect, request, flash, url_for
-from datetime import date
 import database
 import funções
 
@@ -48,12 +47,8 @@ except database.mysql.connector.Error:
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "BIOTECH"
 
-# PÁGINA HOME
+# PÁGINA HOME/CADASTRO
 @app.route('/')
-def home():
-    return render_template('cadastro.html')
-
-# PÁGINA DE CADASTRO
 @app.route('/cadastro')
 def cadastro():
     return render_template('cadastro.html')
@@ -91,12 +86,12 @@ def logar():
         if database.consultar_login(email, senha) == True:
             if database.verificar_admin(email) == True:
                 if ".senacsp.edu.br" in funções.obter_dominio():
-                    return redirect(url_for('consultas_adm', usuario = funções.url_usuario(email)+000000000000))
+                    return redirect(url_for('exames_adm', usuario = funções.url_usuario(email)))
                     erro = 'Você precisa estar conectado na empresa para acessar login de administrador'
                     flash(erro)
                     return redirect('/login')
             else:
-                return redirect(url_for('consultas', usuario = funções.url_usuario(email)))
+                return redirect(url_for('exames', usuario = funções.url_usuario(email)))
         elif database.consultar_login(email, senha) == False:
             erro = 'Email ou senha incorretos'
             flash(erro)
@@ -106,21 +101,26 @@ def logar():
             flash(erro)
             return redirect('/login')
 
-# g_nome = logar()[1]
-
 # PÁGINA DE CONSULTAS DO USUÁRIO
-@app.route('/<usuario>/consultas')
-def consultas(usuario):
-    lista_exames = database.lista_exames()
-    return render_template('consultas.html', lista_exames=lista_exames)
+# @app.route('/<usuario>/consultas')
+# def consultas(usuario):
+#     lista_exames = database.lista_exames()
+#     return render_template('consultas.html', lista_exames=lista_exames)
 
 # @app.route('/<usuario>/consultas', methods=['POST'])
 # def marcar():
-#     # capturar dados do formulário
-#     horario = funções.verificar_horario(database.consultar_horarios(profissional)[0], database.consultar_horarios(profissional)[1])
-#     if horario == 0:
-#         vai sumir
-#     else: roda função de marcar
+#     if request.method == 'POST':
+#         data = request.form.get('data')
+#         print(data)
+#     # horario = funções.verificar_horario(database.consultar_horarios(profissional)[0], database.consultar_horarios(profissional)[1])
+#     # if horario == 0:
+#     #     vai sumir
+#     # else: roda função de marcar
+
+# @app.route('/<usuario>/consultas_adm')
+# def consultas_adm(usuario):
+#     return render_template('consultas_adm.html')
+
 
 # PÁGINA DE EXAMES DO USUÁRIO
 @app.route('/<usuario>/exames')
@@ -128,35 +128,34 @@ def exames(usuario):
     # database.recolher_exames(g_nome)
     return render_template('exames.html')
 
-
-@app.route('/<usuario>/consultas_adm')
-def consultas_adm(usuario):
-    return render_template('consultas_adm.html')
-
 # IMPLEMENTAR DIGITOO VERIFICADOR!
 @app.route('/<usuario>/exames_adm')
 def exames_adm(usuario):
-    if usuario == 000000000000:
-        return render_template('exames_adm.html')
-    else: return render_template('login.html')
+    return render_template('novo_exame.html', lista_exames = database.lista_exames(), usuario = usuario)
 
-# @app.route('/<usuario>/exames_adm', methods=['POST'])
-# def lançar_exame():
-#     if request.method == 'POST':
-#             # capturar dados do formulário
-#         while True:
-#             if paciente == '' or tipo_exame == '' or exame == '':
-#                 erro = 'PREENCHA TODOS OS CAMPOS'
-#                 flash(erro)
-#                 return redirect(url_for('lançar_exame')) #talvez aqui tenha que vir o link dinâmico do usuário
-#             else:
-#                 break
-#         if database.consultar_nome == False:
-#             erro = 'ESSE PACIENTE NÃO EXISTE'
-#             flash(erro)
-#             return redirect(url_for('lançar_exame')) #talvez aqui tenha que vir o link dinâmico do usuário
-#         else:
-#             database.inserir_exames(paciente, date.today(), profissional, tipo_exame, exame)
+@app.route('/<usuario>/exames_adm', methods=['POST'])
+def lançar_exame(usuario):
+    if request.method == 'POST':
+        exame = request.form.get('especialidade')
+        data = request.form.get('datemax')
+        paciente = request.form.get('name_usu')
+        link = request.form.get('url')
+        while True:
+            if paciente == '' or exame == '' or link == '' or data == '':
+                erro = 'PREENCHA TODOS OS CAMPOS'
+                flash(erro)
+                return redirect(url_for('exames_adm', usuario = usuario))#talvez aqui tenha que vir o link dinâmico do usuário
+            else:
+                break 
+        if database.consultar_nome(paciente) == False:
+            erro = 'O PACIENTE NÃO POSSUI CADASTRO'
+            flash(erro)
+            return redirect(url_for('lançar_exame', usuario = usuario)) #talvez aqui tenha que vir o link dinâmico do usuário
+        else:
+            database.inserir_exames(paciente, data, exame, link)
+            erro = 'EXAME ENVIADO COM SUCESSO!!'
+            flash(erro)
+            return redirect(url_for('lançar_exame', usuario = usuario))
 
 # RODANDO SITE
 if __name__ == '__main__':

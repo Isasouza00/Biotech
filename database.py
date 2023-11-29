@@ -99,11 +99,10 @@ def consultar_nome_por_email(email):
     resultado = cursor.fetchall()
     return resultado
 
-# def inserir_exames(paciente, data, profissional, tipo_exame, exame):
-#     comando = f'INSERT INTO tb_exames (paciente, data, profissional, tipo_exame, exame) VALUES ("{paciente}", "{data}", 
-#     "{profissional}", "{tipo_exame}", "{exame}")'
-#     cursor.execute(comando)
-#     conexao.commit()
+def inserir_exames(paciente, data, exame, link):
+    comando = f'INSERT INTO tb_exames (paciente, data, tipo_exame, exame) VALUES ("{paciente}", "{data}", "{exame}", "{link}")'
+    cursor.execute(comando)
+    conexao.commit()
 
 def lista_exames():
     cod_sql = 'SELECT Nome from tb_exames_disponiveis'
@@ -120,4 +119,4 @@ def recolher_exames(nome):
 
 # TERMINAR CRUD
 if __name__ == '__main__':
-    print(lista_exames())
+    print(consultar_nome('Matheus Martins Chagas'))

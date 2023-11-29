@@ -62,8 +62,8 @@ def url_usuario(email):
 #     if datas_formatadas in data_escolhida and horarios_formatados in horario_escolhido:
 #         return 0
 #     else: return 1
-# if __name__ == '__main__':
-#     print(horarios())
+if __name__ == '__main__':
+    print(url_usuario('matheus04chagas@gmail.com'))
 
 
 
