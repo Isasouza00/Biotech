@@ -117,6 +117,13 @@ def recolher_exames(nome):
     resultado = cursor.fetchall()
     return resultado
 
+def lista_especialidades():
+    cod_sql = 'SELECT especialidade from tb_medicos'
+    cursor.execute(cod_sql)
+    resultado = cursor.fetchall()
+    lista_especialidades = [item[0] for item in resultado]
+    return lista_especialidades
+
 # TERMINAR CRUD
 if __name__ == '__main__':
     print(consultar_nome('Matheus Martins Chagas'))
