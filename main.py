@@ -86,7 +86,8 @@ def logar():
         if database.consultar_login(email, senha) == True:
             if database.verificar_admin(email) == True:
                 if ".senacsp.edu.br" in funções.obter_dominio():
-                    return redirect(url_for('exames_adm', usuario = funções.url_usuario(email)))
+                    return redirect(url_for('exames_adm', usuario = funções.url_usuario(email)+'4062696f746563682e636f6d'))
+                else:
                     erro = 'Você precisa estar conectado na empresa para acessar login de administrador'
                     flash(erro)
                     return redirect('/login')
@@ -121,18 +122,20 @@ def logar():
 # def consultas_adm(usuario):
 #     return render_template('consultas_adm.html')
 
-
+#######################################################################################################################
 # PÁGINA DE EXAMES DO USUÁRIO
 @app.route('/<usuario>/exames')
 def exames(usuario):
     # database.recolher_exames(g_nome)
     return render_template('exames.html')
+#######################################################################################################################
 
-# IMPLEMENTAR DIGITOO VERIFICADOR!
 @app.route('/<usuario>/exames_adm')
 def exames_adm(usuario):
-    return render_template('novo_exame.html', lista_exames = database.lista_exames(), usuario = usuario)
-
+    if usuario in '4062696f746563682e636f6d':
+        return render_template('novo_exame.html', lista_exames = database.lista_exames(), usuario = usuario)
+    else:
+        return redirect('/login')
 @app.route('/<usuario>/exames_adm', methods=['POST'])
 def lançar_exame(usuario):
     if request.method == 'POST':
