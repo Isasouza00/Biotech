@@ -149,3 +149,66 @@
 .botao_form button:hover{
     cursor: pointer;
 }
+
+
+.exist_exams{
+    text-align: center;
+    padding-top: 2em;
+}
+
+.exist_exams button{
+    color: white;
+    padding: 10px 60px;
+    font: 20px fonte-300;
+    border-width: 2px;
+    border-style: solid;
+    background-color: #1f1f1f;
+    border-color: #76c33c;
+    border-radius: 60px;
+}
+
+.exist_exams button:hover{
+    cursor: pointer;
+}
+
+
+.calendar{
+    text-align: center;
+    padding-top: 2em;
+}
+
+.calendar button{
+    color: white;
+    padding: 10px 60px;
+    font: 20px fonte-300;
+    border-width: 2px;
+    border-style: solid;
+    background-color: #1f1f1f;
+    border-color: #76c33c;
+    border-radius: 60px;
+}
+
+.calendar button:hover{
+    cursor: pointer;
+}
+
+
+.new_appointiment{
+    text-align: center;
+    padding-top: 2em;
+}
+
+.new_appointiment button{
+    color: white;
+    padding: 10px 60px;
+    font: 20px fonte-300;
+    border-width: 2px;
+    border-style: solid;
+    background-color: #1f1f1f;
+    border-color: #76c33c;
+    border-radius: 60px;
+}
+
+.new_appointiment button:hover{
+    cursor: pointer;
+}
