@@ -63,7 +63,7 @@ def url_usuario(email):
 #         return 0
 #     else: return 1
 if __name__ == '__main__':
-    print(url_usuario('matheus04chagas@biotech.com'))
+    print(obter_dominio())
 
 
 

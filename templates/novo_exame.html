@@ -33,9 +33,9 @@
                     {% endfor %}
             </div>
             <div class="box_navegation">
-                <div class="exist_exams"><button>Tela de exames</button></div>
-                <div class="calendar"><button>Calendário</button></div>
-                <div class="new_appointiment"><button>Nova Consulta</button></div>
+                <div class="exist_exams"><button><a href="{{ url_for('tabela_exames_adm', usuario=usuario) }}">Tela de exames</a></button></div>
+                <div class="calendar"><button><a href="{{ url_for('calendario_consultas_adm', usuario=usuario) }}">Calendário</a></button></div>
+                <div class="new_appointiment"><button><a href="{{ url_for('formulario_consultas', usuario=usuario) }}">Nova Consulta</a></button></div>
             </div>
             {% endif %}
         </form>

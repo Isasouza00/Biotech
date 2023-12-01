@@ -86,14 +86,14 @@ def logar():
                 break
         if database.consultar_login(email, senha) == True:
             if database.verificar_admin(email) == True:
-                if ".senacsp.edu.br" in funções.obter_dominio():
+                if "Mathbook" == funções.obter_dominio():
                     return redirect(url_for('exames_adm', usuario = funções.url_usuario(email)+'4062696f746563682e636f6d', g_nome = g_nome))
                 else:
                     erro = 'Você precisa estar conectado na empresa para acessar login de administrador'
                     flash(erro)
                     return redirect('/login')
             else:
-                return redirect(url_for('exames', usuario = funções.url_usuario(email)))
+                return redirect(url_for('exames', usuario = funções.url_usuario(email), g_nome = g_nome))
         elif database.consultar_login(email, senha) == False:
             erro = 'Email ou senha incorretos'
             flash(erro)
@@ -103,17 +103,28 @@ def logar():
             flash(erro)
             return redirect('/login')
         
-@app.route('/<usuario>/calendario_consultas')
-def calendario_consultas(usuario):
-    return render_template('calendario_consultas.html', usuario = usuario)
+@app.route('/<usuario>/calendario_consultas_adm')
+def calendario_consultas_adm(usuario):
+    if '4062696f746563682e636f6d' in usuario:
+        return render_template('calendario_consultas_adm.html', usuario = usuario)
+    else:
+        return redirect('/login')
 
-@app.route('/<usuario>/calendario_consultas', methods=['POST'])
+@app.route('/<usuario>/calendario_consultas_adm', methods=['POST'])
 def consultas_adm(usuario):
     for c in range(1, 32):
         botão = request.form.get(c)
         botão = int(botão)
-        return render_template('calendario_consultas.html', usuario = usuario, botão = botão, lista_datas = database.data_consulta(g_nome))
-@app.route('/<usuario>/consultas_adm', methods=['POST'])
+        return render_template('calendario_consultas_adm.html', usuario = usuario, botão = botão, lista_datas = database.data_consulta(g_nome))
+
+@app.route('/<usuario>/nova_consulta')
+def formulario_consultas(usuario):
+    if '4062696f746563682e636f6d' in usuario:
+        return render_template('nova_consulta.html', usuario = usuario, g_nome = g_nome)
+    else:
+        return redirect('/login')
+
+@app.route('/<usuario>/nova_consulta', methods=['POST'])
 def lançar_consulta(usuario):
     if request.method == 'POST':
         data = request.form.get('datemax')
@@ -132,7 +143,7 @@ def lançar_consulta(usuario):
             return redirect(url_for('lançar_consulta', usuario = usuario)) #talvez aqui tenha que vir o link dinâmico do usuário
         else:
             database.agendar(paciente, data, g_nome, database.buscar_especialidade(g_nome))
-            erro = 'ONSULTA ADICIONADA COM SUCESSO!!'
+            erro = 'CONSULTA ADICIONADA COM SUCESSO!!'
             flash(erro)
             return redirect(url_for('lançar_consulta', usuario = usuario))
 
@@ -141,23 +152,23 @@ def lançar_consulta(usuario):
 # PÁGINA DE EXAMES DO USUÁRIO
 @app.route('/<usuario>/exames')
 def exames(usuario):
-    database.recolher_exames(g_nome)
     return render_template('exames.html', usuario = usuario, tupla_exames = database.recolher_exames(g_nome))
 #######################################################################################################################
 
-@app.route('/<usuario>/tabela_exames')
-def tabela_exames(usuario):
-    if usuario in '4062696f746563682e636f6d':
-        return render_template('tabela_exames.html', usuario = usuario, tupla_exames = database.recolher_exames_adm(g_nome))
+@app.route('/<usuario>/tabela_exames_adm')
+def tabela_exames_adm(usuario):
+    if '4062696f746563682e636f6d' in usuario:
+        return render_template('tabela_exames_adm.html', usuario = usuario, tupla_exames = database.recolher_exames_adm(g_nome))
     else:
         return redirect('/login')
 
 @app.route('/<usuario>/exames_adm')
 def exames_adm(usuario):
-    if usuario in '4062696f746563682e636f6d':
+    if '4062696f746563682e636f6d' in usuario:
         return render_template('novo_exame.html', lista_exames = database.lista_exames(), usuario = usuario)
     else:
         return redirect('/login')
+    
 @app.route('/<usuario>/exames_adm', methods=['POST'])
 def lançar_exame(usuario):
     if request.method == 'POST':
@@ -177,10 +188,10 @@ def lançar_exame(usuario):
             flash(erro)
             return redirect(url_for('lançar_exame', usuario = usuario)) #talvez aqui tenha que vir o link dinâmico do usuário
         else:
-            database.inserir_exames(paciente, data, exame, link)
+            database.inserir_exames(paciente, data, g_nome, exame, link)
             erro = 'EXAME ENVIADO COM SUCESSO!!'
-            flash(erro)
-            return redirect(url_for('lançar_exame', usuario = usuario))
+            flash(erro + data)
+            return redirect(url_for('lançar_exame', usuario = usuario, g_nome = g_nome))
 
 # RODANDO SITE
 if __name__ == '__main__':

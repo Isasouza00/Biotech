@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/consultas.css">
+    <link rel="stylesheet" href="../static/assets/images/logo_bio.png" type="images">
+    <title>Consultas</title>
+</head>
+<body>
+    <div class="container_patient">
+
+        <div class="box_calendar">
+            <div class="title_calendar">Consulte e marque suas consultas</div>
+            <div class="calendar">
+                <div class="days_week">
+                    <div class="sunday"><b>Dom</b></div>
+                    <div class="monday"><b>Seg</b></div>
+                    <div class="tuesday"><b>Ter</b></div>
+                    <div class="wednesday"><b>Qua</b></div>
+                    <div class="thursday"><b>Qui</b></div>
+                    <div class="friday"><b>Sex</b></div>
+                    <div class="saturday"><b>Sab</b></div>
+                </div>
+                    <form class="days_month" action="{{ url_for('consultas_adm',  usuario = usuario)}}" method="POST">
+                            {% if botão in lista_datas %}
+                                {% set cor = 'blue' %}
+                            {% else %}
+                                {% set cor = 'red' %}
+                            {% endif %}
+                                <div class="one" style="background-color: {{ cor }}"><button name="1">1</button></div>
+                                <div class="two" style="background-color: {{ cor }}"><button name="2">2</button></div>
+                                <div class="three" style="background-color: {{ cor }}"><button name="3">3</button></div>
+                                <div class="four" style="background-color: {{ cor }}"><button name="4">4</button></div>
+                                <div class="five" style="background-color: {{ cor }}"><button name="5">5</button></div>
+                                <div class="six" style="background-color: {{ cor }}"><button name="6">6</button></div>
+                                <div class="seven" style="background-color: {{ cor }}"><button name="7">7</button></div>
+                                <div class="eigth" style="background-color: {{ cor }}"><button name="8">8</button></div>
+                                <div class="nine" style="background-color: {{ cor }}"><button name="9">9</button></div>
+                                <div class="ten" style="background-color: {{ cor }}"><button name="10">10</button></div>
+                                <div class="eleven" style="background-color: {{ cor }}"><button name="11">11</button></div>
+                                <div class="twelve" style="background-color: {{ cor }}"><button name="12">12</button></div>
+                                <div class="thirteen" style="background-color: {{ cor }}"><button name="13">13</button></div>
+                                <div class="fourteen" style="background-color: {{ cor }}"><button name="14">14</button></div>
+                                <div class="fifteen" style="background-color: {{ cor }}"><button name="15">15</button></div>
+                                <div class="sixteen" style="background-color: {{ cor }}"><button name="16">16</button></div>
+                                <div class="seventeen" style="background-color: {{ cor }}"><button name="17">17</button></div>
+                                <div class="eighteen" style="background-color: {{ cor }}"><button name="18">18</button></div>
+                                <div class="nineteen" style="background-color: {{ cor }}"><button name="19">19</button></div>
+                                <div class="twenty" style="background-color: {{ cor }}"><button name="20">20</button></div>
+                                <div class="twenty-one" style="background-color: {{ cor }}"><button name="21">21</button></div>
+                                <div class="twenty-two" style="background-color: {{ cor }}"><button name="22">22</button></div>
+                                <div class="twenty-three" style="background-color: {{ cor }}"><button name="23">23</button></div>
+                                <div class="twenty-four" style="background-color: {{ cor }}"><button name="24">24</button></div>
+                                <div class="twenty-five" style="background-color: {{ cor }}"><button name="25">25</button></div>
+                                <div class="twenty-six" style="background-color: {{ cor }}"><button name="26">26</button></div>
+                                <div class="twenty-seven" style="background-color: {{ cor }}"><button name="27">27</button></div>
+                                <div class="twenty-eight" style="background-color: {{ cor }}"><button name="28">28</button></div>
+                                <div class="twenty-nine" style="background-color: {{ cor }}"><button name="29">29</button></div>
+                                <div class="thirty" style="background-color: {{ cor }}"><button name="30">30</button></div>
+                                <div class="thirty-one" style="background-color: {{ cor }}"><button name="31">31</button></div>
+                        </form>
+            </div>
+        </div>
+
+        <div class="menu_patient">
+            <div class="log_biotech"><img src="../static/assets/images/logo_biotech_small.png" alt=""></div>
+
+            <div class="options_menu">
+                <div class="exams"><hr><span class="text"><button><a href="../templates/exames.html">Exames</a></button></span></div>
+                <div class="appointment">Consultas <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" color="#fff" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 20px; width: 20px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;"><path fill="none" d="m12 4 11.3 11.3a1 1 0 0 1 0 1.4L12 28"></path></svg></div>
+
+                <div class="button_exist"><button>Sair</button></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

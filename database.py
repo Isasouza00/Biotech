@@ -13,8 +13,9 @@ def data_consulta(profissional):
     cod_sql = 'SELECT data from tb_consultas WHERE profissional = "%'+profissional+'%"'
     cursor.execute(cod_sql)
     resultado = cursor.fetchall()
-    lista_datas = [item[0] for item in resultado]
+    lista_datas = [item[0][-2:] for item in resultado]
     return lista_datas
+
 # INSERINDO DADOS USUÁRIO
 def inserir_usuario(nome, cpf, email, senha):
     comando = f'INSERT INTO tb_usuarios (nome, cpf, email, senha) VALUES ("{nome}", "{cpf}", "{email}", "{senha}")'
@@ -112,8 +113,8 @@ def consultar_nome_por_email(email):
     resultado = cursor.fetchall()
     return resultado
 
-def inserir_exames(paciente, data, exame, link):
-    comando = f'INSERT INTO tb_exames (paciente, data, tipo_exame, exame) VALUES ("{paciente}", "{data}", "{exame}", "{link}")'
+def inserir_exames(paciente, data, profissional, exame, link):
+    comando = f'INSERT INTO tb_exames (paciente, data, profissional, tipo_exame, exame) VALUES ("{paciente}", "{data}", "{profissional}", "{exame}", "{link}")'
     cursor.execute(comando)
     conexao.commit()
 
@@ -125,7 +126,7 @@ def lista_exames():
     return lista_exames
 
 def recolher_exames_adm(nome):
-    cod_sql = 'SELECT id_exames, paciente, data, tipo_exame, exame from tb_exames WHERE paciente LIKE "%'+nome+'%"'
+    cod_sql = 'SELECT id_exames, paciente, data, tipo_exame, exame from tb_exames WHERE profissional LIKE "%'+nome+'%"'
     cursor.execute(cod_sql)
     tupla_exames = cursor.fetchall()
     return tupla_exames
@@ -145,4 +146,4 @@ def lista_especialidades():
 
 # TERMINAR CRUD
 if __name__ == '__main__':
-    print(buscar_especialidade('Dr. Ricardo Santos'))
+    print(verificar_admin('livia.clima@biotech.com'))
