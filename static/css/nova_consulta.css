@@ -26,24 +26,39 @@
 
 
 *{
+    color: #fff;
     margin: 0px;
     box-sizing: border-box;
 }
 
-.container{
+.avisos{
+    color: #76c33c;
+    font: 1em fonte-300;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.test{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
     background-image: url(../assets/images/back_biotech.png);
     background-size: 100%; 
     background-repeat: no-repeat;
+
+    height: 100vh;
+    width: 100vw;
 }
 
 .box_form{
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 100vw;
     color: white;
     align-items: center;
     justify-content: center;
+
+    padding-top: 10em;
+    padding-left: 28em;
 }
 
 .titulo_form{
@@ -150,64 +165,155 @@
     cursor: pointer;
 }
 
+
+
+
+
+
+
+
+.menu_patient{
+    justify-content: right;
+
+    margin-left: 4em;
+    width: 15em;
+}
+
+.log_biotech img{
+    padding: 2em;
+
+    height: 159px;
+    width: 217px;
+}
+
+.log_biotech{
+    background-color: #1e1e1e;
+}
+
+.options_menu{
+    font: 15px fonte-300, sans-serif;
+    background-color: #1e1e1e;
+
+    height: 35.5em;
+}
+
 .exist_exams{
-    text-align: center;
-    padding-top: 2em;
+    display: flex;
+    flex-direction: row;
+    
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.exist_exams a{
+    color: #fff;
+    text-decoration: none;
 }
 
 .exist_exams button{
-    color: white;
-    padding: 10px 60px;
-    font: 20px fonte-300;
-    border-width: 2px;
-    border-style: solid;
-    background-color: #1f1f1f;
-    border-color: #76c33c;
-    border-radius: 60px;
+    font: 18px fonte-300, sans-serif;
+    background-color: transparent;
+
+    border: transparent;
 }
 
-.exist_exams button:hover{
-    cursor: pointer;
+.exist_exams hr{
+    border: 3px solid #76C33C;
+
+    width: 0.2px;
+    height: 43px;
+
+    margin: 0px;
 }
 
+.exist_exams span{
+    padding: 12px 12px 0px 12px;
+}
 
 .calendar{
-    text-align: center;
-    padding-top: 2em;
+    display: flex;
+    flex-direction: row;
+    
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-top: 0.5em;
+}
+
+.calendar a{
+    color: #fff;
+    text-decoration: none;
 }
 
 .calendar button{
-    color: white;
-    padding: 10px 60px;
-    font: 20px fonte-300;
-    border-width: 2px;
-    border-style: solid;
-    background-color: #1f1f1f;
-    border-color: #76c33c;
-    border-radius: 60px;
+    font: 18px fonte-300, sans-serif;
+    background-color: transparent;
+
+    border: transparent;
 }
 
-.calendar button:hover{
-    cursor: pointer;
+.calendar hr{
+    border: 3px solid #76C33C;
+
+    width: 0.2px;
+    height: 43px;
+
+    margin: 0px;
 }
 
+.calendar span{
+    padding: 12px 12px 0px 12px;
+}
 
 .new_appointiment{
-    text-align: center;
-    padding-top: 2em;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-top: 0.5em;
+}
+
+.new_appointiment a{
+    color: #fff;
+    text-decoration: none;
 }
 
 .new_appointiment button{
-    color: white;
-    padding: 10px 60px;
-    font: 20px fonte-300;
-    border-width: 2px;
-    border-style: solid;
-    background-color: #1f1f1f;
-    border-color: #76c33c;
-    border-radius: 60px;
+    font: 18px fonte-300, sans-serif;
+    background-color: transparent;
+
+    border: transparent;
 }
 
-.new_appointiment button:hover{
-    cursor: pointer;
+.new_appointiment hr{
+    border: 3px solid #76C33C;
+
+    width: 0.2px;
+    height: 43px;
+
+    margin: 0px;
+}
+
+.new_appointiment span{
+    padding: 12px 12px 0px 18px;
+}
+
+
+.button_exist{
+    color: #fff;
+    text-align: right;
+
+    margin-top: 20em;
+    margin-right: 1em;
+}
+
+.button_exist a{
+    color: #fff;
+}
+
+.button_exist button{
+    color: #fff;
+    font: 18px fonte-100, sans-serif;
+    text-decoration: underline;
+    background-color: transparent;
+
+    border: transparent;
 }

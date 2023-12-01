@@ -9,34 +9,40 @@
 <body>
     <div class="container">
         <form action="{{ url_for('lançar_exame',  usuario = usuario)}}" method="POST">
-            <div class="box_form">
-                <div class="titulo_form">Entrada de exames</div>
-                <div class="subtitulo_form">Preencher todos os campos</div>
-                <div class="esp_exame">
-                    <select name="especialidade">
-                        <option value="">Selecione um exame</option>
-                        {% for exame in lista_exames %}
-                            <option value="{{ exame }}"> {{ exame }} </option>
+            <div class="test">
+                <div class="box_form">
+                    <div class="titulo_form">Entrada de exames</div>
+                    <div class="subtitulo_form">Preencher todos os campos</div>
+                    <div class="esp_exame">
+                        <select name="especialidade">
+                            <option value="">Selecione um exame</option>
+                            {% for exame in lista_exames %}
+                                <option value="{{ exame }}"> {{ exame }} </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="data_exame"><input type="date" id="datemax" name="datemax" placeholder="" max="2023-12-01"></div>
+                    <div class="nome_usu"><input type="text" name = 'name_usu' id="usu" maxlength={32} placeholder="Nome do Usuário" size="40"></div>
+                    <div class="url_pdf"><input type="url" id="homepage" name="url"></div>
+                    <div class="botao_form"> <button type="submit"> Confirmar </button></div>
+                    {% set mensagens = get_flashed_messages() %}
+                    {% if mensagens %}
+                    <!-- mudar a classe e arrumar no CSS -->
+                    <div class="avisos"><br>
+                        {% for msg in mensagens %}
+                            {{msg}}
                         {% endfor %}
-                    </select>
+                    </div>
                 </div>
-                <div class="data_exame"><input type="date" id="datemax" name="datemax" placeholder="" max="2023-12-01"></div>
-                <div class="nome_usu"><input type="text" name = 'name_usu' id="usu" maxlength={32} placeholder="Nome do Usuário" size="40"></div>
-                <div class="url_pdf"><input type="url" id="homepage" name="url"></div>
-                <div class="botao_form"> <button type="submit"> Confirmar </button></div>
-                {% set mensagens = get_flashed_messages() %}
-                {% if mensagens %}
-                <!-- mudar a classe e arrumar no CSS -->
-                <div class="ISA COLOCA AQUI UMA NOVA CLASSE E DEIXA BUNITIN"><br>
-                    {% for msg in mensagens %}
-                        {{msg}}
-                    {% endfor %}
-                {% endif %}
-            </div>
-            <div class="box_navegation">
-                <div class="exist_exams"><button><a href="{{ url_for('tabela_exames_adm', usuario=usuario) }}">Tela de exames</a></button></div>
-                <div class="calendar"><button><a href="{{ url_for('calendario_consultas_adm', usuario=usuario) }}">Calendário</a></button></div>
-                <div class="new_appointiment"><button><a href="{{ url_for('formulario_consultas', usuario=usuario) }}">Nova Consulta</a></button></div>
+                <div class="menu_patient">
+                    <div class="log_biotech"><img src="../static/assets/images/logo_biotech_small.png" alt=""></div>
+                    <div class="options_menu">
+                        <div class="exist_exams"><hr><span><button><a href="{{ url_for('tabela_exames_adm', usuario=usuario) }}">Tela de exames</a></button></span></div>
+                        <div class="calendar"><hr><span></span><button><a href="{{ url_for('calendario_consultas_adm', usuario=usuario) }}">Calendário</a></button></span></div>
+                        <div class="new_appointiment"><hr><span></span><button><a href="{{ url_for('formulario_consultas', usuario=usuario) }}">Nova Consulta</a></button></span></div>
+                        <div class="button_exist"><button><a href="{{ url_for('cadastro', usuario=usuario) }}"> Sair</a></button></div>
+                    </div>
+                </div>
             </div>
         </form>
     </div>

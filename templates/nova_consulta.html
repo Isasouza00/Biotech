@@ -7,8 +7,8 @@
     <title> Formulário Consulta </title>
 </head>
 <body>
-    <div class="container">
-        <form action="{{ url_for('lançar_consulta',  usuario = usuario, g_nome=g_nome)}}" method="POST">
+    <form action="{{ url_for('lançar_consulta',  usuario = usuario)}}" method="POST">
+        <div class="test">
             <div class="box_form">
                 <div class="titulo_form">Entrada de consultas</div>
                 <div class="subtitulo_form">Preencher todos os campos</div>
@@ -16,20 +16,21 @@
                 <div class="nome_usu"><input type="text" name = 'name_usu' id="usu" maxlength={32} placeholder="Nome do Paciente" size="40"/></div>
                 <div class="botao_form"> <button type="submit"> Confirmar </button></div>
             </div>
-            {% set mensagens = get_flashed_messages() %}
-            {% if mensagens %}
-            <!-- mudar a classe e arrumar no CSS -->
-            <div class="ISA COLOCA AQUI UMA NOVA CLASSE E DEIXA BUNITIN"><br>
-                {% for msg in mensagens %}
-                    {{msg}}
-                {% endfor %}
-        </form>
-        <div class="box_navegation">
-            <div class="exist_exams"><button>Tela de exames</button></div>
-            <div class="calendar"><button>Calendário</button></div>
-            <div class="new_appointiment"><button>Nova Consulta</button></div>
-            {% endif %}
+
+            <div class="menu_patient">
+                <div class="log_biotech"><img src="../static/assets/images/logo_biotech_small.png" alt=""></div>
+    
+                <div class="options_menu">
+                    <div class="exist_exams"><hr><span></span><button>Tela de conaultas</button></span></div>
+                    <div class="calendar"><hr><span></span><button>Exames</button></span></div>
+                    <div class="new_appointiment"><hr><span><button>Novo exame</button></span></div>
+                    <div class="button_exist"><button><a href="{{ url_for('cadastro', usuario=usuario) }}"> Sair</a></button></div>
+                </div>
+            </div>
         </div>
+
+    </form>
+    
     </div>
 </body>
 </html>
