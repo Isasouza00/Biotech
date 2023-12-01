@@ -93,7 +93,7 @@ def logar():
                     flash(erro)
                     return redirect('/login')
             else:
-                return redirect(url_for('exames', usuario = funções.url_usuario(email), g_nome = g_nome))
+                return redirect(url_for('tabela_exames', usuario = funções.url_usuario(email), g_nome = g_nome))
         elif database.consultar_login(email, senha) == False:
             erro = 'Email ou senha incorretos'
             flash(erro)
@@ -150,10 +150,7 @@ def lançar_consulta(usuario):
 
 @app.route('/<usuario>/calendario_consultas')
 def calendario_consultas(usuario):
-    if '4062696f746563682e636f6d' in usuario:
-        return render_template('calendario_consultas.html', usuario = usuario)
-    else:
-        return redirect('/login')
+        return render_template('calendario_consultas.html', usuario = usuario, g_nome = g_nome)
 
 @app.route('/<usuario>/calendario_consultas', methods=['POST'])
 def consultas(usuario):
