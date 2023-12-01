@@ -4,7 +4,7 @@ import funções
 import datetime
 
 #FUNÇÃO PARA VERIFICAR CONDIÇÕES PARA ACEITE DO CADASTRO
-def confirmaçoes(nome, cpf, email, senha, confirmaçao_senha):
+def confirmaçoes(nome, cpf, email, senha, confirmaçao_senha, especialidade):
     # IMPLEMENTAR CONFIRMAÇÃO DE CPF DUPLICADO
     #EXEMPLO PRA LIVIA VER
     #VERIFICA SE CAMPOS ESTÃO PREENCHIDOS
@@ -64,7 +64,8 @@ def cadastrar():
         email = request.form.get('cadastro_email').lower()
         senha = request.form.get('cadastro_senha')
         confirmaçao_senha = request.form.get('confirmaçao_senha')
-        return confirmaçoes(nome, cpf, email, senha, confirmaçao_senha)
+        especialidade = request.form.get('especialidade')
+        return confirmaçoes(nome, cpf, email, senha, confirmaçao_senha, especialidade)
 
 # PÁGINA DE LOGIN
 @app.route('/login')
@@ -87,7 +88,7 @@ def logar():
                 break
         if database.consultar_login(email, senha) == True:
             if database.verificar_admin(email) == True:
-                if "Mathbook" == funções.obter_dominio():
+                if ".senacsp.edu.br" in funções.obter_dominio():
                     return redirect(url_for('novo_exame', usuario = funções.url_usuario(email)+'4062696f746563682e636f6d', g_nome = g_nome))
                 else:
                     erro = 'Você precisa estar conectado na empresa para acessar login de administrador'
