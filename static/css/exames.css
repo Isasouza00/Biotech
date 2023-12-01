@@ -23,6 +23,9 @@
     src: url('../assets/fonts/Montserrat-Bold.woff');
 }
 
+*{
+    color: #fff;
+}
 
 body{
     margin: 0px;
