@@ -22,7 +22,7 @@
                     <div class="friday"><b>Sex</b></div>
                     <div class="saturday"><b>Sab</b></div>
                 </div>
-                    <form class="days_month" action="{{ url_for('consultas_adm',  usuario = usuario)}}" method="POST">
+                    <form class="days_month" action="{{ url_for('consultas',  usuario = usuario)}}" method="POST">
                             {% if botão in lista_datas %}
                                 {% set cor = 'red' %}
                             {% else %}
