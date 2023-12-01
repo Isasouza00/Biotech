@@ -87,7 +87,7 @@ def logar():
         if database.consultar_login(email, senha) == True:
             if database.verificar_admin(email) == True:
                 if "Mathbook" == funções.obter_dominio():
-                    return redirect(url_for('exames_adm', usuario = funções.url_usuario(email)+'4062696f746563682e636f6d', g_nome = g_nome))
+                    return redirect(url_for('novo_exame', usuario = funções.url_usuario(email)+'4062696f746563682e636f6d', g_nome = g_nome))
                 else:
                     erro = 'Você precisa estar conectado na empresa para acessar login de administrador'
                     flash(erro)
@@ -129,12 +129,11 @@ def formulario_consultas(usuario):
 def lançar_consulta(usuario):
     if request.method == 'POST':
         data = request.form.get('datemax')
-        # horario = request.form.get('...')
         paciente = request.form.get('name_usu')
         while True:
             if paciente == '' or data == '':
                 erro = 'PREENCHA TODOS OS CAMPOS'
-                flash(erro)
+                flash(data)
                 return redirect(url_for('consultas_adm', usuario = usuario))#talvez aqui tenha que vir o link dinâmico do usuário
             else:
                 break 
