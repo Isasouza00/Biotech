@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/consultas.css">
+    <link rel="stylesheet" href="../static/assets/images/logo_bio.png" type="images">
+    <title>Consultas</title>
+</head>
+<body>
+    <div class="container_patient">
+
+        <div class="box_calendar">
+            <div class="title_calendar">Consulte e marque suas consultas</div>
+            <div class="calendar">
+                <div class="days_week">
+                    <div class="sunday"><b>Dom</b></div>
+                    <div class="monday"><b>Seg</b></div>
+                    <div class="tuesday"><b>Ter</b></div>
+                    <div class="wednesday"><b>Qua</b></div>
+                    <div class="thursday"><b>Qui</b></div>
+                    <div class="friday"><b>Sex</b></div>
+                    <div class="saturday"><b>Sab</b></div>
+                </div>
+                    <form class="days_month" action="{{ url_for('consultas_adm',  usuario = usuario)}}" method="POST">
+                        {% for c in range(1, 32) %}
+                            {% if botão in lista_datas %}
+                                {% set cor = 'azul' %}
+                            {% else %}
+                                {% set cor = 'vermelho' %}
+                            {% endif %}
+                                <div class="one"><button name="1">1</button></div>
+                                <div class="two"><button name="2">2</button></div>
+                                <div class="three"><button name="3">3</button></div>
+                                <div class="four"><button name="4">4</button></div>
+                                <div class="five"><button name="5">5</button></div>
+                                <div class="six"><button name="6">6</button></div>
+                                <div class="seven"><button name="7">7</button></div>
+                                <div class="eigth"><button name="8">8</button></div>
+                                <div class="nine"><button name="9">9</button></div>
+                                <div class="ten"><button name="10">10</button></div>
+                                <div class="eleven"><button name="11">11</button></div>
+                                <div class="twelve"><button name="12">12</button></div>
+                                <div class="thirteen"><button name="13">13</button></div>
+                                <div class="fourteen"><button name="14">14</button></div>
+                                <div class="fifteen"><button name="15">15</button></div>
+                                <div class="sixteen"><button name="16">16</button></div>
+                                <div class="seventeen"><button name="17">17</button></div>
+                                <div class="eighteen"><button name="18">18</button></div>
+                                <div class="nineteen"><button name="19">19</button></div>
+                                <div class="twenty"><button name="20">20</button></div>
+                                <div class="twenty-one"><button name="21">21</button></div>
+                                <div class="twenty-two"><button name="22">22</button></div>
+                                <div class="twenty-three"><button name="23">23</button></div>
+                                <div class="twenty-four"><button name="24">24</button></div>
+                                <div class="twenty-five"><button name="25">25</button></div>
+                                <div class="twenty-six"><button name="26">26</button></div>
+                                <div class="twenty-seven"><button name="27">27</button></div>
+                                <div class="twenty-eight"><button name="28">28</button></div>
+                                <div class="twenty-nine"><button name="29">29</button></div>
+                                <div class="thirty"><button name="30">30</button></div>
+                                <div class="thirty-one"><button name="31">31</button></div>
+                            {% endfor %}
+                        </form>
+            </div>
+        </div>
+
+        <div class="container_menu_consultas">
+            <span class="especialidade"><button>Especialidade</button></span>
+            <ul class="especialidade_menu">
+                {% for exame in lista_exames %}
+                    <li>{{ exame }}</li>
+                {% endfor %}
+            </ul>
+            <div class="hora"><button>Horários</button></div>
+            <ul class="hora_menu">
+                <li>15:00</li>
+                <li>18:00</li>
+                <li>18:30</li>
+            </ul>
+        </div>
+
+        <div class="menu_patient">
+            <div class="log_biotech"><img src="../static/assets/images/logo_biotech_small.png" alt=""></div>
+
+            <div class="options_menu">
+                <div class="exams"><hr><span class="text"><button><a href="../templates/exames.html">Exames</a></button></span></div>
+                <div class="appointment">Consultas <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" color="#fff" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 20px; width: 20px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;"><path fill="none" d="m12 4 11.3 11.3a1 1 0 0 1 0 1.4L12 28"></path></svg></div>
+
+                <div class="button_exist"><button>Sair</button></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

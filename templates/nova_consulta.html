@@ -8,19 +8,12 @@
 </head>
 <body>
     <div class="container">
-        <form action="/formulario" method="POST">
+        <form action="{{ url_for('lançar_consulta',  usuario = usuario)}}" method="POST">
             <div class="box_form">
                 <div class="titulo_form">Entrada de consultas</div>
                 <div class="subtitulo_form">Preencher todos os campos</div>
-                <div class="esp_consulta">
-                    <select name="especialidade">
-                        <option value="esp" selected>Clínica</option>
-                        <option value="esp">Ginicologia</option>
-                        <option value="esp">Oftalmologia</option>
-                    </select>
-                </div>
                 <div class="data_consulta"><input type="datetime-local" id="datemax" name="datemax" placeholder="" max="2023-12-01"/></div>
-                <div class="nome_usu"><input type="text" name = 'name_usu' id="usu" maxlength={32} placeholder="Nome do Usuário" size="40"/></div>
+                <div class="nome_usu"><input type="text" name = 'name_usu' id="usu" maxlength={32} placeholder="Nome do Paciente" size="40"/></div>
                 <div class="botao_form"> <button type="submit"> Confirmar </button></div>
             </div>
         </form>

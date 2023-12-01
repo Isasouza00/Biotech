@@ -72,10 +72,11 @@ def login():
 
 @app.route('/login', methods=['POST'])
 def logar():
+    global g_nome
     if request.method == 'POST':
         email = request.form.get('login_email')
         senha = funções.criptografa_senha(request.form.get('login_senha'))
-        nome = database.consultar_nome_por_email(email)
+        g_nome = database.consultar_nome_por_email(email)[0][0]
         while True:
             if (email == '' or senha == ''):
                 erro = 'PREENCHA TODOS OS CAMPOS'
@@ -86,7 +87,7 @@ def logar():
         if database.consultar_login(email, senha) == True:
             if database.verificar_admin(email) == True:
                 if ".senacsp.edu.br" in funções.obter_dominio():
-                    return redirect(url_for('exames_adm', usuario = funções.url_usuario(email)+'4062696f746563682e636f6d'))
+                    return redirect(url_for('exames_adm', usuario = funções.url_usuario(email)+'4062696f746563682e636f6d', g_nome = g_nome))
                 else:
                     erro = 'Você precisa estar conectado na empresa para acessar login de administrador'
                     flash(erro)
@@ -101,34 +102,55 @@ def logar():
             erro = 'Email não encontrado'
             flash(erro)
             return redirect('/login')
+        
+@app.route('/<usuario>/calendario_consultas')
+def calendario_consultas(usuario):
+    return render_template('calendario_consultas.html', usuario = usuario)
 
-# PÁGINA DE CONSULTAS DO USUÁRIO
-# @app.route('/<usuario>/consultas')
-# def consultas(usuario):
-#     lista_exames = database.lista_exames()
-#     return render_template('consultas.html', lista_exames=lista_exames)
+@app.route('/<usuario>/calendario_consultas', methods=['POST'])
+def consultas_adm(usuario):
+    for c in range(1, 32):
+        botão = request.form.get(c)
+        botão = int(botão)
+        return render_template('calendario_consultas.html', usuario = usuario, botão = botão, lista_datas = database.data_consulta(g_nome))
+@app.route('/<usuario>/consultas_adm', methods=['POST'])
+def lançar_consulta(usuario):
+    if request.method == 'POST':
+        data = request.form.get('datemax')
+        # horario = request.form.get('...')
+        paciente = request.form.get('name_usu')
+        while True:
+            if paciente == '' or data == '':
+                erro = 'PREENCHA TODOS OS CAMPOS'
+                flash(erro)
+                return redirect(url_for('consultas_adm', usuario = usuario))#talvez aqui tenha que vir o link dinâmico do usuário
+            else:
+                break 
+        if database.consultar_nome(paciente) == False:
+            erro = 'O PACIENTE NÃO POSSUI CADASTRO'
+            flash(erro)
+            return redirect(url_for('lançar_consulta', usuario = usuario)) #talvez aqui tenha que vir o link dinâmico do usuário
+        else:
+            database.agendar(paciente, data, g_nome, database.buscar_especialidade(g_nome))
+            erro = 'ONSULTA ADICIONADA COM SUCESSO!!'
+            flash(erro)
+            return redirect(url_for('lançar_consulta', usuario = usuario))
 
-# @app.route('/<usuario>/consultas', methods=['POST'])
-# def marcar():
-#     if request.method == 'POST':
-#         data = request.form.get('data')
-#         print(data)
-#     # horario = funções.verificar_horario(database.consultar_horarios(profissional)[0], database.consultar_horarios(profissional)[1])
-#     # if horario == 0:
-#     #     vai sumir
-#     # else: roda função de marcar
-
-# @app.route('/<usuario>/consultas_adm')
-# def consultas_adm(usuario):
-#     return render_template('consultas_adm.html')
 
 #######################################################################################################################
 # PÁGINA DE EXAMES DO USUÁRIO
 @app.route('/<usuario>/exames')
 def exames(usuario):
-    # database.recolher_exames(g_nome)
-    return render_template('exames.html')
+    database.recolher_exames(g_nome)
+    return render_template('exames.html', usuario = usuario, tupla_exames = database.recolher_exames(g_nome))
 #######################################################################################################################
+
+@app.route('/<usuario>/tabela_exames')
+def tabela_exames(usuario):
+    if usuario in '4062696f746563682e636f6d':
+        return render_template('tabela_exames.html', usuario = usuario, tupla_exames = database.recolher_exames_adm(g_nome))
+    else:
+        return redirect('/login')
 
 @app.route('/<usuario>/exames_adm')
 def exames_adm(usuario):

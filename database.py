@@ -9,6 +9,12 @@ conexao = mysql.connector.connect(host='localhost', user='root',
 # CRIANDO CURSOR
 cursor = conexao.cursor()
 
+def data_consulta(profissional):
+    cod_sql = 'SELECT data from tb_consultas WHERE profissional = "%'+profissional+'%"'
+    cursor.execute(cod_sql)
+    resultado = cursor.fetchall()
+    lista_datas = [item[0] for item in resultado]
+    return lista_datas
 # INSERINDO DADOS USUÁRIO
 def inserir_usuario(nome, cpf, email, senha):
     comando = f'INSERT INTO tb_usuarios (nome, cpf, email, senha) VALUES ("{nome}", "{cpf}", "{email}", "{senha}")'
@@ -56,11 +62,18 @@ def consultar_consultas(paciente):
         return None
     else: 
         return resultado
+    
+def buscar_especialidade(profissional):
+    cod_sql = 'SELECT Especialidade from tb_medicos WHERE Nome LIKE "%'+profissional+'%"'
+    cursor.execute(cod_sql)
+    resultado = cursor.fetchall()
+    especialidade = [item[0] for item in resultado]
+    return especialidade
 
 # AGENDAR CONSULTAS
-def agendar(paciente, data, profissional, especialidade, observação):
-    cod_sql = '''INSERT INTO tb_consultas (paciente, data, profissional, especialidade, observação) VALUES ("{paciente}",
-    "{data}", "{profissional}", "{especialidade}", "{observação}")'''
+def agendar(paciente, data, profissional, especialidade):
+    cod_sql = '''INSERT INTO tb_consultas (paciente, data, profissional, especialidade) VALUES ("{paciente}",
+    "{data}", "{profissional}", "{especialidade}")'''
     cursor.execute(cod_sql)
 
 # Consultar horários
@@ -111,11 +124,17 @@ def lista_exames():
     lista_exames = [item[0] for item in resultado]
     return lista_exames
 
-def recolher_exames(nome):
-    cod_sql = 'SELECT * from tb_exames WHERE paciente LIKE "%'+nome+'%"'
+def recolher_exames_adm(nome):
+    cod_sql = 'SELECT id_exames, paciente, data, tipo_exame, exame from tb_exames WHERE paciente LIKE "%'+nome+'%"'
     cursor.execute(cod_sql)
-    resultado = cursor.fetchall()
-    return resultado
+    tupla_exames = cursor.fetchall()
+    return tupla_exames
+
+def recolher_exames(nome):
+    cod_sql = 'SELECT id_exames, data, profissional, tipo_exame, exame from tb_exames WHERE paciente LIKE "%'+nome+'%"'
+    cursor.execute(cod_sql)
+    tupla_exames = cursor.fetchall()
+    return tupla_exames
 
 def lista_especialidades():
     cod_sql = 'SELECT especialidade from tb_medicos'
@@ -126,4 +145,4 @@ def lista_especialidades():
 
 # TERMINAR CRUD
 if __name__ == '__main__':
-    print(consultar_nome('Matheus Martins Chagas'))
+    print(buscar_especialidade('Dr. Ricardo Santos'))
