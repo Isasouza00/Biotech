@@ -104,61 +104,62 @@ def logar():
             flash(erro)
             return redirect('/login')
         
-@app.route('/<usuario>/calendario_consultas_adm')
-def calendario_consultas_adm(usuario):
-    if '4062696f746563682e636f6d' in usuario:
-        return render_template('calendario_consultas_adm.html', usuario = usuario)
-    else:
-        return redirect('/login')
+############################################################################################################################################################################################      
+# @app.route('/<usuario>/calendario_consultas_adm')
+# def calendario_consultas_adm(usuario):
+#     if '4062696f746563682e636f6d' in usuario:
+#         return render_template('calendario_consultas_adm.html', usuario = usuario)
+#     else:
+#         return redirect('/login')
 
-@app.route('/<usuario>/calendario_consultas_adm', methods=['POST'])
-def consultas_adm(usuario):
-    for c in range(1, 32):
-        botão = request.form.get(c)
-        botão = int(botão)
-        return render_template('calendario_consultas_adm.html', usuario = usuario, botão = botão, lista_datas = database.data_consulta(g_nome))
+# @app.route('/<usuario>/calendario_consultas_adm', methods=['POST'])
+# def consultas_adm(usuario):
+#     for c in range(1, 32):
+#         botão = request.form.get(c)
+#         botão = int(botão)
+#         return render_template('calendario_consultas_adm.html', usuario = usuario, botão = botão, lista_datas = database.data_consulta(g_nome))
 
 ############################################################################################################################################################################################
-@app.route('/<usuario>/nova_consulta')
-def formulario_consultas(usuario):
-    if '4062696f746563682e636f6d' in usuario:
-        return render_template('nova_consulta.html', usuario = usuario, g_nome = g_nome)
-    else:
-        return redirect('/login')
+# @app.route('/<usuario>/nova_consulta')
+# def formulario_consultas(usuario):
+#     if '4062696f746563682e636f6d' in usuario:
+#         return render_template('nova_consulta.html', usuario = usuario, g_nome = g_nome)
+#     else:
+#         return redirect('/login')
 
-@app.route('/<usuario>/nova_consulta', methods=['POST'])
-def lançar_consulta(usuario):
-    if request.method == 'POST':
-        data_hora = request.form.get('datemax').replace('T', ' ')
-        paciente = request.form.get('name_usu')
-        while True:
-            if paciente == '' or data_hora == '':
-                erro = 'PREENCHA TODOS OS CAMPOS'
-                flash(erro)
-                return redirect(url_for('formulario_consultas', usuario = usuario, g_nome = g_nome))#talvez aqui tenha que vir o link dinâmico do usuário
-            else:
-                break 
-        if database.consultar_nome(paciente) == False:
-            erro = 'O PACIENTE NÃO POSSUI CADASTRO'
-            flash(erro)
-            return redirect(url_for('formulario_consultas', usuario = usuario, g_nome = g_nome)) #talvez aqui tenha que vir o link dinâmico do usuário
-        else:
-            database.agendar(paciente, data_hora, g_nome, g_nome)
-            erro = 'CONSULTA ADICIONADA COM SUCESSO!!'
-            flash(erro)
-            return redirect(url_for('formulario_consultas', usuario = usuario, g_nome = g_nome))
+# @app.route('/<usuario>/nova_consulta', methods=['POST'])
+# def lançar_consulta(usuario):
+#     if request.method == 'POST':
+#         data_hora = request.form.get('datemax').replace('T', ' ')
+#         paciente = request.form.get('name_usu')
+#         while True:
+#             if paciente == '' or data_hora == '':
+#                 erro = 'PREENCHA TODOS OS CAMPOS'
+#                 flash(erro)
+#                 return redirect(url_for('formulario_consultas', usuario = usuario, g_nome = g_nome))#talvez aqui tenha que vir o link dinâmico do usuário
+#             else:
+#                 break 
+#         if database.consultar_nome(paciente) == False:
+#             erro = 'O PACIENTE NÃO POSSUI CADASTRO'
+#             flash(erro)
+#             return redirect(url_for('formulario_consultas', usuario = usuario, g_nome = g_nome)) #talvez aqui tenha que vir o link dinâmico do usuário
+#         else:
+#             database.agendar(paciente, data_hora, g_nome, g_nome)
+#             erro = 'CONSULTA ADICIONADA COM SUCESSO!!'
+#             flash(erro)
+#             return redirect(url_for('formulario_consultas', usuario = usuario, g_nome = g_nome))
 
-@app.route('/<usuario>/calendario_consultas')
-def calendario_consultas(usuario):
-        return render_template('calendario_consultas.html', usuario = usuario, g_nome = g_nome)
+# @app.route('/<usuario>/calendario_consultas')
+# def calendario_consultas(usuario):
+#         return render_template('calendario_consultas.html', usuario = usuario, g_nome = g_nome)
 
-@app.route('/<usuario>/calendario_consultas', methods=['POST'])
-def consultas(usuario):
-    for c in range(1, 32):
-        botão = request.form.get(c)
-        botão = int(botão)
-        return render_template('calendario_consultas.html', usuario = usuario, botão = botão, lista_datas = database.data_consulta(g_nome))
-############################################################################################################################################################################################
+# @app.route('/<usuario>/calendario_consultas', methods=['POST'])
+# def consultas(usuario):
+#     for c in range(1, 32):
+#         botão = request.form.get(c)
+#         botão = int(botão)
+#         return render_template('calendario_consultas.html', usuario = usuario, botão = botão, lista_datas = database.data_consulta(g_nome))
+# ############################################################################################################################################################################################
 
 # PÁGINA DE EXAMES DO USUÁRIO
 @app.route('/<usuario>/tabela_exames')
@@ -185,9 +186,9 @@ def lançar_exame(usuario):
         exame = request.form.get('especialidade')
         data = request.form.get('datemax')
         paciente = request.form.get('name_usu')
-        link = request.form.get('url')
+        pdf = request.files['pdf']
         while True:
-            if paciente == '' or exame == '' or link == '' or data == '':
+            if paciente == '' or exame == '' or pdf == '' or data == '':
                 erro = 'PREENCHA TODOS OS CAMPOS'
                 flash(erro)
                 return redirect(url_for('novo_exame', usuario = usuario))#talvez aqui tenha que vir o link dinâmico do usuário
@@ -198,7 +199,7 @@ def lançar_exame(usuario):
             flash(erro)
             return redirect(url_for('novo_exame', usuario = usuario)) #talvez aqui tenha que vir o link dinâmico do usuário
         else:
-            database.inserir_exames(paciente, data, g_nome, exame, link)
+            database.inserir_exames(paciente, data, g_nome, exame, funções.pdf(pdf))
             erro = 'EXAME ENVIADO COM SUCESSO!!'
             flash(erro)
             return redirect(url_for('novo_exame', usuario = usuario, g_nome = g_nome))

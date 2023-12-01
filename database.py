@@ -9,12 +9,12 @@ conexao = mysql.connector.connect(host='localhost', user='root',
 # CRIANDO CURSOR
 cursor = conexao.cursor()
 
-def data_consulta(profissional):
-    cod_sql = 'SELECT data from tb_consulta WHERE profissional = "%'+profissional+'%"'
-    cursor.execute(cod_sql)
-    resultado = cursor.fetchall()
-    lista_datas = [item[0][-2:] for item in resultado]
-    return lista_datas
+# def data_consulta(profissional):
+#     cod_sql = 'SELECT data_hora from tb_consulta WHERE profissional = "%'+profissional+'%"'
+#     cursor.execute(cod_sql)
+#     resultado = cursor.fetchall()
+#     lista_datas = [item[0][-2:] for item in resultado]
+#     return lista_datas
 
 # INSERINDO DADOS USUÁRIO
 def inserir_usuario(nome, cpf, email, senha):
@@ -55,14 +55,14 @@ def verificar_admin (email):
         return False
     
 # CONSULTAR CONSULTAS
-def consultar_consultas(paciente):
-    cod_sql = 'SELECT * from tb_consulta WHERE paciente LIKE "%'+paciente+'%"'
-    cursor.execute(cod_sql)
-    resultado = cursor.fetchall()
-    if len(resultado) == 0:
-        return None
-    else: 
-        return resultado
+# def consultar_consultas(paciente):
+#     cod_sql = 'SELECT * from tb_consulta WHERE paciente LIKE "%'+paciente+'%"'
+#     cursor.execute(cod_sql)
+#     resultado = cursor.fetchall()
+#     if len(resultado) == 0:
+#         return None
+#     else: 
+#         return resultado
     
 def buscar_especialidade(profissional):
     cod_sql = 'SELECT Especialidade from tb_medicos WHERE Nome LIKE "%'+profissional+'%"'
@@ -72,29 +72,29 @@ def buscar_especialidade(profissional):
     return especialidade
 
 # AGENDAR CONSULTAS
-def agendar(paciente, data_hora, profissional, especialidade):
-    cod_sql = '''INSERT INTO tb_consulta (paciente, data_hora, profissional, especialidade) VALUES ("{paciente}",
-    "{data_hora}", "{profissional}", "{especialidade}")'''
-    cursor.execute(cod_sql)
+# def agendar(paciente, data_hora, profissional, especialidade):
+#     cod_sql = '''INSERT INTO tb_consulta (paciente, data_hora, profissional, especialidade) VALUES ("{paciente}",
+#     "{data_hora}", "{profissional}", "{especialidade}")'''
+#     cursor.execute(cod_sql)
 
 # Consultar horários
-def consultar_horarios(profissional):
-    cod_sql = 'SELECT data, horario from tb_consulta WHERE profissional LIKE "%'+profissional+'%"'
-    cursor.execute(cod_sql)
-    resultado = cursor.fetchall()
-    lista_datas = []
-    lista_horarios = []
-    for c in range (0, len(resultado)):
-        acesso = resultado[c]
-        data = acesso[0]
-        horario = acesso[1]
-        lista_datas.append(data)
-        lista_horarios.append(horario)
-    datas_formatadas = [data.strftime('%Y-%m-%d') for data in lista_datas]
-    lista_segundos = [str(int(t.total_seconds())) for t in lista_horarios]
-    horarios_formatados = [str(datetime.timedelta(seconds=int(s))) for s in lista_segundos]
-    horarios_formatados = [':'.join(h.split(':')[:2]) for h in horarios_formatados]
-    return datas_formatadas, horarios_formatados
+# def consultar_horarios(profissional):
+#     cod_sql = 'SELECT data, horario from tb_consulta WHERE profissional LIKE "%'+profissional+'%"'
+#     cursor.execute(cod_sql)
+#     resultado = cursor.fetchall()
+#     lista_datas = []
+#     lista_horarios = []
+#     for c in range (0, len(resultado)):
+#         acesso = resultado[c]
+#         data = acesso[0]
+#         horario = acesso[1]
+#         lista_datas.append(data)
+#         lista_horarios.append(horario)
+#     datas_formatadas = [data.strftime('%Y-%m-%d') for data in lista_datas]
+#     lista_segundos = [str(int(t.total_seconds())) for t in lista_horarios]
+#     horarios_formatados = [str(datetime.timedelta(seconds=int(s))) for s in lista_segundos]
+#     horarios_formatados = [':'.join(h.split(':')[:2]) for h in horarios_formatados]
+#     return datas_formatadas, horarios_formatados
 
 #Consultar nome
 def consultar_nome(paciente):
