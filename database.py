@@ -75,7 +75,7 @@ def buscar_especialidade(profissional):
 def agendar(paciente, data_hora, profissional, especialidade):
     cod_sql = '''INSERT INTO tb_consulta (paciente, data_hora, profissional, especialidade) VALUES ("{paciente}",
     "{data_hora}", "{profissional}", "{especialidade}")'''
-    return cursor.execute(cod_sql)
+    cursor.execute(cod_sql)
 
 # Consultar horários
 def consultar_horarios(profissional):
