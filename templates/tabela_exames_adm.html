@@ -33,7 +33,11 @@
                     <td class="line_name">{{ item[1] }}</td>
                     <td class="line_type">{{ item[2] }}</td>
                     <td class="line_date">{{ item[3] }}</td>
-                    <td><a href="{{ item[4] }}">Link</a></td>
+                    <td><a href="{{ item[4] }}">
+                        <figure>
+                            <div class="pdf"><img src="../static/assets/images/pdf_icon.png" alt=""></div>
+                        </figure>
+                    </a></td>
                 </tr>
                 {% endfor %}
             </table>
