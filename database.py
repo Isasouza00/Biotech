@@ -10,7 +10,7 @@ conexao = mysql.connector.connect(host='localhost', user='root',
 cursor = conexao.cursor()
 
 def data_consulta(profissional):
-    cod_sql = 'SELECT data from tb_consultas WHERE profissional = "%'+profissional+'%"'
+    cod_sql = 'SELECT data from tb_consulta WHERE profissional = "%'+profissional+'%"'
     cursor.execute(cod_sql)
     resultado = cursor.fetchall()
     lista_datas = [item[0][-2:] for item in resultado]
@@ -56,7 +56,7 @@ def verificar_admin (email):
     
 # CONSULTAR CONSULTAS
 def consultar_consultas(paciente):
-    cod_sql = 'SELECT * from tb_consultas WHERE paciente LIKE "%'+paciente+'%"'
+    cod_sql = 'SELECT * from tb_consulta WHERE paciente LIKE "%'+paciente+'%"'
     cursor.execute(cod_sql)
     resultado = cursor.fetchall()
     if len(resultado) == 0:
@@ -72,14 +72,14 @@ def buscar_especialidade(profissional):
     return especialidade
 
 # AGENDAR CONSULTAS
-def agendar(paciente, data, profissional, especialidade):
-    cod_sql = '''INSERT INTO tb_consultas (paciente, data, profissional, especialidade) VALUES ("{paciente}",
-    "{data}", "{profissional}", "{especialidade}")'''
-    cursor.execute(cod_sql)
+def agendar(paciente, data_hora, profissional, especialidade):
+    cod_sql = '''INSERT INTO tb_consulta (paciente, data_hora, profissional, especialidade) VALUES ("{paciente}",
+    "{data_hora}", "{profissional}", "{especialidade}")'''
+    return cursor.execute(cod_sql)
 
 # Consultar horários
 def consultar_horarios(profissional):
-    cod_sql = 'SELECT data, horario from tb_consultas WHERE profissional LIKE "%'+profissional+'%"'
+    cod_sql = 'SELECT data, horario from tb_consulta WHERE profissional LIKE "%'+profissional+'%"'
     cursor.execute(cod_sql)
     resultado = cursor.fetchall()
     lista_datas = []

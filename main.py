@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, request, flash, url_for
 import database
 import funções
+import datetime
 
 #FUNÇÃO PARA VERIFICAR CONDIÇÕES PARA ACEITE DO CADASTRO
 def confirmaçoes(nome, cpf, email, senha, confirmaçao_senha):
@@ -128,24 +129,24 @@ def formulario_consultas(usuario):
 @app.route('/<usuario>/nova_consulta', methods=['POST'])
 def lançar_consulta(usuario):
     if request.method == 'POST':
-        data = request.form.get('datemax')
+        data_hora = request.form.get('datemax').replace('T', ' ')+':00'
         paciente = request.form.get('name_usu')
         while True:
-            if paciente == '' or data == '':
+            if paciente == '' or data_hora == '':
                 erro = 'PREENCHA TODOS OS CAMPOS'
-                flash(data)
-                return redirect(url_for('consultas_adm', usuario = usuario))#talvez aqui tenha que vir o link dinâmico do usuário
+                flash(erro)
+                return redirect(url_for('formulario_consultas', usuario = usuario, g_nome = g_nome))#talvez aqui tenha que vir o link dinâmico do usuário
             else:
                 break 
         if database.consultar_nome(paciente) == False:
             erro = 'O PACIENTE NÃO POSSUI CADASTRO'
             flash(erro)
-            return redirect(url_for('lançar_consulta', usuario = usuario)) #talvez aqui tenha que vir o link dinâmico do usuário
+            return redirect(url_for('formulario_consultas', usuario = usuario, g_nome = g_nome)) #talvez aqui tenha que vir o link dinâmico do usuário
         else:
-            database.agendar(paciente, data, g_nome, database.buscar_especialidade(g_nome))
+            database.agendar(paciente, data_hora, g_nome, database.buscar_especialidade(g_nome))
             erro = 'CONSULTA ADICIONADA COM SUCESSO!!'
-            flash(erro)
-            return redirect(url_for('lançar_consulta', usuario = usuario))
+            flash(data_hora)
+            return redirect(url_for('formulario_consultas', usuario = usuario, g_nome = g_nome))
 
 @app.route('/<usuario>/calendario_consultas')
 def calendario_consultas(usuario):
