@@ -1,7 +1,6 @@
 import hashlib
 import socket
 import database
-import base64
 
 def obter_dominio():
     nome_host = socket.gethostname()
@@ -58,10 +57,6 @@ def criptografa_senha(senha):
 def url_usuario(email):
     hashed = hashlib.md5(email.encode('utf-8'))
     return hashed.hexdigest()
-
-def pdf(pdf):
-    pdf_binário = base64.b64decode(pdf.read())
-    return pdf_binário
 
 if __name__ == '__main__':
     print(obter_dominio())
