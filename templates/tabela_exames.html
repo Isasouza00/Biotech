@@ -16,12 +16,14 @@
             <div class="tit_exames"><hr><b>Exames</b></div>
 
             <div class="titulo-verde">
-                <tr class="column">
-                    <td class="column_id">ID</td>
-                    <td class="column_name">Médico</td>
-                    <td class="column_type">Tipo do exame</td>
-                    <td class="column_date">Data</td>
-                </tr>
+                <table>
+                    <tr class="column">
+                        <td class="column_id">ID</td>
+                        <td class="column_name">Nome</td>
+                        <td class="column_type">Tipo do exame</td>
+                        <td class="column_date">Data</td>
+                    </tr>
+                </table>
             </div>
 
             <table>
@@ -31,12 +33,12 @@
                     <td class="line_name">{{ item[1] }}</td>
                     <td class="line_type">{{ item[2] }}</td>
                     <td class="line_date">{{ item[3] }}</td>
-                    <td><a href="{{ item[4] }}">Link</a></td>
-                </tr><a href="{{ item[4] }}">
-                    <figure>
-                        <div class="pdf"><img src="../static/assets/images/pdf_icon.png" alt=""></div>
-                    </figure>
-                </a></td>
+                    <td><a href="{{ item[4] }}">
+                        <figure>
+                            <div class="pdf"><img src="../static/assets/images/pdf_icon.png" alt=""></div>
+                        </figure>
+                    </a></td>
+                </tr>
                 {% endfor %}
             </table>
                     <!-- <tr class="line_2">
